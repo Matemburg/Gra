@@ -84,8 +84,8 @@ namespace Princes_Escape
             // 
             this.progressBar1.BackColor = System.Drawing.Color.Wheat;
             this.progressBar1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.progressBar1.Location = new System.Drawing.Point(100,100);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Location = new System.Drawing.Point(100, 100);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.MarqueeAnimationSpeed = 5;
             this.progressBar1.Maximum = 10;
             this.progressBar1.Name = "progressBar1";
@@ -127,6 +127,7 @@ namespace Princes_Escape
             this.Text = "Tower Atack";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMiniPaint_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Gra_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMiniPaint_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

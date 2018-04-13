@@ -18,6 +18,7 @@ namespace Princes_Escape
             InitializeComponent();
             simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Menu);
             simpleSound.Play();
+        
             pictureBox1.Image = new Bitmap(300, 100);
             l = Graphics.FromImage(pictureBox1.Image);
             l.DrawImage(Princes_Escape.Properties.Resources.Princes, 100, 25);

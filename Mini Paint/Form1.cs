@@ -36,7 +36,7 @@ namespace Princes_Escape
         {
    
             InitializeComponent();
-
+         
         }
 
 
@@ -63,6 +63,9 @@ namespace Princes_Escape
 
         private void Magia()
         {
+
+         
+
             bool wygrana = false;
             g.Clear(Color.Transparent);
 
@@ -150,8 +153,8 @@ namespace Princes_Escape
                         Princess.addXP(1);
                         progressBar1.Maximum = Princess.get_trudnosc();
                         progressBar1.Increment(1);
-                        label2.Text= Princess.get_lvl().ToString();
-                        if(prevint<Princess.get_lvl())
+                        label2.Text = Princess.get_lvl().ToString();
+                        if (prevint < Princess.get_lvl())
                         {
                             progressBar1.Increment(-Princess.get_trudnosc());
                         }
@@ -160,10 +163,14 @@ namespace Princes_Escape
                         {
                             MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
                             System.Windows.Forms.Application.Exit();
-                            
+
                         }
+
+                        SoundPlayer simpleSound;
+                        simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Kill);
+                        simpleSound.Play();
+                        poziom.get_wrogowie()[w].zabij();
                     }
-                    poziom.get_wrogowie()[w].zabij();
                 }
             }
 
@@ -221,10 +228,8 @@ namespace Princes_Escape
             label4.Location = new Point(5*Width /6, 4 * Height / 7);
             label2.Parent = imgObrazek;
             label4.Parent = imgObrazek;
-          // SoundPlayer simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Muzyka_2);
 
-
-          //  simpleSound.PlayLooping();
+        
 
             poziom = new Lvl();
             poziom.Lvl_1();
@@ -319,6 +324,25 @@ namespace Princes_Escape
 
         }
 
-        
+        private void Gra_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+                Princess.ruch_up();
+            else
+ if (e.KeyCode == Keys.Down)
+                Princess.ruch_down();
+            else
+ if (e.KeyCode == Keys.Right)
+                Princess.ruch_left();
+            else
+ if (e.KeyCode == Keys.Left)
+                Princess.ruch_right();
+
+
+
+
+            lkrokow++;
+            Magia();
+        }
     }
 }
