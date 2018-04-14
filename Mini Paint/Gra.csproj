@@ -247,6 +247,27 @@
   <ItemGroup>
     <None Include="Resources\Kill.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Krok_1.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Krok_2.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Krok_3.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Krok_4.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Krok_5.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Krok_6.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button_select.WAV" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

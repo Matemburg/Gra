@@ -190,4 +190,25 @@
   <data name="Kill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Kill.wav;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Button_select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button_select.WAV;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Krok_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Krok_1.WAV;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Krok_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Krok_2.WAV;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Krok_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Krok_3.WAV;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Krok_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Krok_4.WAV;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Krok_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Krok_5.WAV;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Krok_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Krok_6.WAV;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

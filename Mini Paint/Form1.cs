@@ -12,6 +12,7 @@ namespace Princes_Escape
 {
     public partial class Gra : Form
     {
+        public SoundPlayer Krok;
         private Lvl poziom;
         private int wielkosc_planszy = 9;
         private Gracz Princess;
@@ -37,28 +38,6 @@ namespace Princes_Escape
    
             InitializeComponent();
          
-        }
-
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-
-
-
-        }
-
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-
-
-
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
         }
 
         private void Magia()
@@ -196,36 +175,72 @@ namespace Princes_Escape
             Magia();
         }
 
+        private void Losuj_dzwiek_chodzenia() {
+            int liczba_losowa;
+            Random losuj_krok = new Random();
+            liczba_losowa = losuj_krok.Next(1, 6);
+            if (liczba_losowa == 1) 
+            Krok = new SoundPlayer(Princes_Escape.Properties.Resources.Krok_1);
+            else if (liczba_losowa == 2) 
+            Krok = new SoundPlayer(Princes_Escape.Properties.Resources.Krok_2);
+            else if (liczba_losowa == 3) 
+            Krok = new SoundPlayer(Princes_Escape.Properties.Resources.Krok_3);
+            else if (liczba_losowa == 4) 
+            Krok = new SoundPlayer(Princes_Escape.Properties.Resources.Krok_4);
+            else if (liczba_losowa == 5) 
+            Krok = new SoundPlayer(Princes_Escape.Properties.Resources.Krok_5);
+            else if (liczba_losowa == 6) 
+            Krok = new SoundPlayer(Princes_Escape.Properties.Resources.Krok_6);
 
+        }
         private void Gra_KeyDown(object sender, KeyEventArgs e)
         {
+            Losuj_dzwiek_chodzenia();
             if (e.KeyCode == Keys.Up)
+            {
                 Princess.ruch_up();
+                Krok.Play();
+            }
             else
- if (e.KeyCode == Keys.Down)
+             if (e.KeyCode == Keys.Down)
+            { 
                 Princess.ruch_down();
+             Krok.Play();
+             }
             else
- if (e.KeyCode == Keys.Right)
+             if (e.KeyCode == Keys.Right) { 
                 Princess.ruch_left();
+                   Krok.Play();
+            }
             else
- if (e.KeyCode == Keys.Left)
+             if (e.KeyCode == Keys.Left) { 
                 Princess.ruch_right();
-
+            Krok.Play();
+        }
+ 
             if (e.KeyCode == Keys.Escape)
                 System.Windows.Forms.Application.Exit();
 
-            if (e.KeyCode == Keys.W)
+            if (e.KeyCode == Keys.W) { 
                 Princess.ruch_up();
+                Krok.Play();
+            }
             else
-            if (e.KeyCode == Keys.S)
+            if (e.KeyCode == Keys.S) { 
                 Princess.ruch_down();
+                Krok.Play();
+            }
             else
-            if (e.KeyCode == Keys.D)
+            if (e.KeyCode == Keys.D) { 
                 Princess.ruch_left();
+                Krok.Play();
+            }
             else
-            if (e.KeyCode ==  Keys.A)
+            if (e.KeyCode == Keys.A) { 
                 Princess.ruch_right();
-           
+                Krok.Play();
+            }
+
             if (e.KeyCode == Keys.Subtract)
             {
                 Princess.restart(0, 0);
