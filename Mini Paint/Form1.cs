@@ -18,34 +18,22 @@ namespace Princes_Escape
         private Gracz Princess;
         private Graphics g;
         private Graphics l;
-        private Point p = Point.Empty;
-        private Point A = Point.Empty;
-        private Point B = Point.Empty;
-        private Pen pioro;
-        private Pen REDPEN;
         private Plansza PLANSZA;
         private Image Pipi;
-        private int prevint;
+        private int lvl_Princess;
         private int stage = 0;
         private int lkrokow = 0;
-        //  private Przeciwnik[3] Spiders;
-        //  private int i = 0;
-        //   private int j = 0;
-
 
         public Gra()
         {
-   
             InitializeComponent();
-         
         }
 
-        private void Magia()
+        private void Rysowanie_i_obliczanie()
         {
-      
             g.Clear(Color.Transparent);
             g.DrawImage(Princes_Escape.Properties.Resources.Ladder__Wood_, PLANSZA.POLA[0, 0].centrumX - 32, PLANSZA.POLA[0, 0].centrumY - 32, 64, 64);
-    
+           
             ////pipi
 
             if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].permission == false)
@@ -69,7 +57,7 @@ namespace Princes_Escape
        
             ///// Przeszkody
 
-            for (int w = 0; w < poziom.get_przeszkody()[0].get_Count(); w++)
+            for (int w = 0; w < poziom.get_przeszkody().Count; w++)
             {
 
                 g.DrawImage(poziom.get_przeszkody()[w].avatar, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumY - 32, 64, 64);
@@ -88,12 +76,12 @@ namespace Princes_Escape
                     if (poziom.get_wrogowie()[w].get_istnieje() == true)
                     {
                         Princess.zran(poziom.get_wrogowie()[w].atak);
-                        prevint = Princess.get_lvl();
+                        lvl_Princess = Princess.get_lvl();
                         Princess.addXP(poziom.get_wrogowie()[w].xp);
                         progressBar1.Maximum = Princess.get_trudnosc();
                         progressBar1.Increment(poziom.get_wrogowie()[w].xp);
                         label2.Text = Princess.get_lvl().ToString();
-                        if (prevint < Princess.get_lvl())
+                        if (lvl_Princess < Princess.get_lvl())
                         {
                             progressBar1.Increment(-Princess.get_trudnosc());
                         }
@@ -102,7 +90,6 @@ namespace Princes_Escape
                         {
                             MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
                             System.Windows.Forms.Application.Exit();
-
                         }
 
                         SoundPlayer simpleSound;
@@ -132,7 +119,7 @@ namespace Princes_Escape
                             g.DrawImage(poziom.get_item()[a].avatar, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumY - 32, 64, 64);
                     }
 
-            for (int i = 0; i < poziom.get_przeszkody()[0].get_Count(); i++)
+            for (int i = 0; i < poziom.get_przeszkody().Count; i++)
             {
                 PLANSZA.POLA[poziom.get_przeszkody()[i].get_x(), poziom.get_przeszkody()[i].get_y()].permission = false;
             }
@@ -147,6 +134,9 @@ namespace Princes_Escape
             
         private void Gra_Load(object sender, EventArgs e)
         {
+            //SoundPlayer Muzyka;
+           // Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
+           // Muzyka.PlayLooping();
             progressBar1.Location = new Point(Width/30,4*Height/5);
             progressBar1.Size = new Size((Width*10)/65, 24);
             label2.Location = new Point(Width / 30, 4*Height / 7);
@@ -158,7 +148,7 @@ namespace Princes_Escape
             poziom.Lvl_1();
            
             PLANSZA = new Plansza(Height, wielkosc_planszy, (Width - Height) / 2);
-            for (int i = 0; i < poziom.get_przeszkody()[0].get_Count(); i++)
+            for (int i = 0; i < poziom.get_przeszkody().Count; i++)
             {
                 PLANSZA.POLA[poziom.get_przeszkody()[i].get_x(), poziom.get_przeszkody()[i].get_y()].permission = false;
             }
@@ -167,12 +157,10 @@ namespace Princes_Escape
             g = Graphics.FromImage(imgObrazek.Image);
             l = Graphics.FromImage(imgObrazek.Image);
             
-            pioro = new Pen(Color.White);
-            REDPEN = new Pen(Color.Red);
             Pipi = Princes_Escape.Properties.Resources.Princes;
             label2.BackColor = Color.Transparent;
             label4.BackColor = Color.Transparent;
-            Magia();
+            Rysowanie_i_obliczanie();
         }
 
         private void Losuj_dzwiek_chodzenia() {
@@ -254,10 +242,8 @@ namespace Princes_Escape
                 poziom.Lvl_losuj(stage);
 
             }
-
-
             lkrokow++;
-            Magia();
+            Rysowanie_i_obliczanie();
         }
     }
 }

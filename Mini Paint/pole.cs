@@ -33,13 +33,5 @@ namespace Princes_Escape
         {
             return centrumY;
         }
-
-        
-
-
-
-
-
-
     }
 }

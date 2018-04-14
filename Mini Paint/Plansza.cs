@@ -9,15 +9,9 @@ namespace Princes_Escape
         private int x;
         private int y;
         public pole[,] POLA;
-
         
-        //public pole start;
-        // public pole koniec;
-
         public Plansza(int wymiar, int ilePol, int odstep)
         {
-            //   start =POLA [0, 0];
-            //  koniec =POLA [ilePol, ilePol];
             x = wymiar;
             y = wymiar;
             POLA = new pole[ilePol, ilePol];

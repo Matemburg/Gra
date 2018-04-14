@@ -12,7 +12,7 @@ namespace Princes_Escape
     public partial class Form2 : Form
     {
         public SoundPlayer simpleSound;
-        public SoundPlayer Click= new SoundPlayer(Properties.Resources.Button_select);
+        public SoundPlayer Klik= new SoundPlayer(Properties.Resources.Button_select);
         private Graphics l;
         public Form2()
         {
@@ -28,8 +28,14 @@ namespace Princes_Escape
         private void button1_Click(object sender, EventArgs e)
         {
             simpleSound.Stop();
-            Click.Play();
+            Klik.Play();
             new Gra().Show();
+            this.Hide();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

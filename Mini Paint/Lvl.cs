@@ -9,13 +9,13 @@ namespace Princes_Escape
     {
         private List<Przeciwnik> Wrogowie;
         private List<Item> Przedmioty;
-        private Przeszkody[] Przeszkadajki { get; set; }
+        private List<Przeszkody> Przeszkadajki;
 
 
         public Lvl ()
         {
             Wrogowie = new List<Przeciwnik>();
-            Przeszkadajki = new Przeszkody[81];
+            Przeszkadajki = new List<Przeszkody>();
             Przedmioty = new List<Item>();
         }
         public void Lvl_1 (){
@@ -34,12 +34,12 @@ namespace Princes_Escape
             Wrogowie.Add(new Przeciwnik(5, 8));
             Wrogowie.Add(new Przeciwnik(8, 5));
 
-            Przeszkadajki[0] = new Przeszkody("lawa", 3, 3);
-            Przeszkadajki[1] = new Przeszkody("totem", 3, 4);
-            Przeszkadajki[2] = new Przeszkody("stone3", 5, 5);
-            Przeszkadajki[3] = new Przeszkody("mstone",5, 6);
-            Przeszkadajki[4] = new Przeszkody("pillar", 5, 7);
-            Przeszkadajki[5] = new Przeszkody("stone2", 4, 8);
+            Przeszkadajki.Add( new Przeszkody("lawa", 3, 3));
+            Przeszkadajki.Add(new Przeszkody("totem", 3, 4));
+            Przeszkadajki.Add(new Przeszkody("stone3", 5, 5));
+            Przeszkadajki.Add(new Przeszkody("mstone",5, 6));
+            Przeszkadajki.Add(new Przeszkody("pillar", 5, 7));
+            Przeszkadajki.Add(new Przeszkody("stone2", 4, 8));
 
         }
 
@@ -47,7 +47,7 @@ namespace Princes_Escape
         {
             Przedmioty.Clear();
             Wrogowie.Clear();
-            Przeszkadajki[0].restet();
+            Przeszkadajki.Clear();
             Random random = new Random(DateTime.Now.Millisecond);
             int Liczba_losowa;
             int c = 0;
@@ -108,26 +108,25 @@ namespace Princes_Escape
                                     Random losowanie_przeszkody = new Random(DateTime.Now.Millisecond);
                                     int los = losowanie_przeszkody.Next(0, 10);
                                     if (los == 1)
-                                        Przeszkadajki[c] = new Przeszkody("lawa", i, j);
+                                         Przeszkadajki.Add(new Przeszkody("lawa", i, j));
                                     else if (los == 1)
-                                        Przeszkadajki[c] = new Przeszkody("stone1", i, j);
+                                        Przeszkadajki.Add(new Przeszkody("stone1", i, j));
                                     else if (los == 3)
-                                        Przeszkadajki[c] = new Przeszkody("stone2", i, j);
+                                        Przeszkadajki.Add(new Przeszkody("stone2", i, j));
                                     else if (los == 4)
-                                        Przeszkadajki[c] = new Przeszkody("coffin", i, j);
+                                        Przeszkadajki.Add(new Przeszkody("coffin", i, j));
                                     else if (los == 5)
-                                        Przeszkadajki[c] = new Przeszkody("column", i, j);
+                                        Przeszkadajki.Add(new Przeszkody("column", i, j));
                                     else if (los == 6)
-                                        Przeszkadajki[c] = new Przeszkody("ccolumn", i, j);
+                                        Przeszkadajki.Add(new Przeszkody("ccolumn", i, j));
                                     else if (los == 7)
-                                        Przeszkadajki[c] = new Przeszkody("totem", i, j);
+                                        Przeszkadajki.Add( new Przeszkody("totem", i, j));
                                     else if (los == 8)
-                                        Przeszkadajki[c] = new Przeszkody("mstone", i, j);
+                                        Przeszkadajki.Add(new Przeszkody("mstone", i, j));
                                     else if (los == 9)
-                                        Przeszkadajki[c] = new Przeszkody("pillar", i, j);
+                                        Przeszkadajki.Add(new Przeszkody("pillar", i, j));
                                     else
-                                        Przeszkadajki[c] = new Przeszkody("stone3", i, j);
-                                    c++;
+                                        Przeszkadajki.Add(new Przeszkody("stone3", i, j)); 
                                     L_Lava++;
                                 }
                             }
@@ -150,7 +149,7 @@ namespace Princes_Escape
             return Przedmioty;
         }
 
-        public Przeszkody[] get_przeszkody()
+        public List<Przeszkody> get_przeszkody()
         {
             return Przeszkadajki;
         }
