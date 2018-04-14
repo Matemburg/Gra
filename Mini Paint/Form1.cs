@@ -140,7 +140,7 @@ namespace Princes_Escape
 
             /// WROGOWIE ////////////////////////////////////////////
 
-            for (int w = 0; w < poziom.get_wrogowie()[0].get_Count(); w++)
+            for (int w = 0; w < poziom.get_wrogowie().Count; w++)
             {
                 if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()])
                 {
@@ -148,11 +148,11 @@ namespace Princes_Escape
 
                     if (poziom.get_wrogowie()[w].get_istnieje() == true)
                     {
-                        Princess.zran();
+                        Princess.zran(poziom.get_wrogowie()[w].atak);
                         prevint = Princess.get_lvl();
-                        Princess.addXP(1);
+                        Princess.addXP(poziom.get_wrogowie()[w].xp);
                         progressBar1.Maximum = Princess.get_trudnosc();
-                        progressBar1.Increment(1);
+                        progressBar1.Increment(poziom.get_wrogowie()[w].xp);
                         label2.Text = Princess.get_lvl().ToString();
                         if (prevint < Princess.get_lvl())
                         {
@@ -174,7 +174,7 @@ namespace Princes_Escape
                 }
             }
 
-                for (int w = 0; w < poziom.get_wrogowie()[0].get_Count(); w++)
+                for (int w = 0; w < poziom.get_wrogowie().Count; w++)
             {
                 if (poziom.get_wrogowie()[w].get_istnieje() == true)
                     g.DrawImage(poziom.get_wrogowie()[w].avatar, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);

@@ -66,9 +66,11 @@ namespace Princes_Escape
             }
         }
 
-        public void zran()
+        public void zran(int ile)
         {
-            hp--;
+            hp=hp-ile;
+            if (hp < 0)
+                hp = 0;
         }
         public int gethp()
         {

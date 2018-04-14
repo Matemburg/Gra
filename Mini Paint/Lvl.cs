@@ -7,14 +7,14 @@ namespace Princes_Escape
 {
     class Lvl
     {
-        private Przeciwnik[] Wrogowie { get; set; }
+        private List<Przeciwnik> Wrogowie;
         private Item[] Przedmioty { get; set; }
         private Przeszkody[] Przeszkadajki { get; set; }
 
 
         public Lvl ()
         {
-            Wrogowie = new Przeciwnik[81];
+            Wrogowie = new List<Przeciwnik>();
             Przeszkadajki = new Przeszkody[81];
             Przedmioty = new Item[81];
         }
@@ -23,17 +23,16 @@ namespace Princes_Escape
             Przedmioty[0]=(new Item("apteczka", 2, 2));
 
 
-
-            Wrogowie[0] = (new Przeciwnik(2, 3));
-            Wrogowie[1] = (new Przeciwnik(4, 4));
-            Wrogowie[2] = (new Przeciwnik(7, 7));
-            Wrogowie[3] = (new Przeciwnik(7, 8));
-            Wrogowie[4] = (new Przeciwnik(8, 7));
-            Wrogowie[5] = (new Przeciwnik(6, 7));
-            Wrogowie[6] = (new Przeciwnik(6, 6));
-            Wrogowie[7] = (new Przeciwnik(7, 4));
-            Wrogowie[8] = (new Przeciwnik(5, 8));
-            Wrogowie[9] = (new Przeciwnik(8, 5));
+            Wrogowie.Add(new Przeciwnik(2, 3));
+            Wrogowie.Add(new Przeciwnik(4, 4));
+            Wrogowie.Add(new Przeciwnik(7, 7));
+            Wrogowie.Add(new Przeciwnik(7, 8));
+            Wrogowie.Add(new Przeciwnik(8, 7));
+            Wrogowie.Add(new Przeciwnik(6, 7));
+            Wrogowie.Add(new Przeciwnik(6, 6));
+            Wrogowie.Add(new Przeciwnik(7, 4));
+            Wrogowie.Add(new Przeciwnik(5, 8));
+            Wrogowie.Add(new Przeciwnik(8, 5));
 
             Przeszkadajki[0] = new Przeszkody("lawa", 3, 3);
             Przeszkadajki[1] = new Przeszkody("totem", 3, 4);
@@ -49,7 +48,7 @@ namespace Princes_Escape
         public void Lvl_2()
         {
             Przedmioty[0].restet();
-            Wrogowie[0].restet();
+            Wrogowie.Clear();
             Przeszkadajki[0].restet();
 
 
@@ -57,7 +56,7 @@ namespace Princes_Escape
             Przedmioty[1] = (new Item("apteczka", 8, 4));
 
 
-
+            /*
             Wrogowie[0] = (new Przeciwnik(1, 2));
             Wrogowie[1] = (new Przeciwnik(2, 3));
             Wrogowie[2] = (new Przeciwnik(3, 4));
@@ -81,7 +80,7 @@ namespace Princes_Escape
             Wrogowie[20] = (new Przeciwnik(8, 3));
             Wrogowie[21] = (new Przeciwnik(8, 5));
             Wrogowie[22] = (new Przeciwnik(8, 6));
-
+*/
             Przeszkadajki[0] = new Przeszkody("lawa", 3, 3);
             Przeszkadajki[1] = new Przeszkody("stone3", 4, 3);
             Przeszkadajki[2] = new Przeszkody("totem", 5, 3);
@@ -95,7 +94,7 @@ namespace Princes_Escape
         public void Lvl_losuj(int stage)
         {
             Przedmioty[0].restet();
-            Wrogowie[0].restet();
+            Wrogowie.Clear();
             Przeszkadajki[0].restet();
             Random random = new Random();
             int u;
@@ -134,6 +133,7 @@ namespace Princes_Escape
                             u++;
                         }
                     }
+                    
                     if (u == 2 || u == 3 || u == 5)
                     {
                         if (L_przeciwnik < i+stage)
@@ -143,10 +143,10 @@ namespace Princes_Escape
 
                             {
                                 if(u==2)
-                                Wrogowie[b] = (new Przeciwnik(i, j));
+                                Wrogowie.Add(new Przeciwnik(i, j));
                                 else
-                                Wrogowie[b] = (new Przeciwnik(i, j,true));
-                                b++;
+                                Wrogowie.Add(new Przeciwnik(i, j,2,2,"wąż"));
+                                
                                 L_przeciwnik++;
                             }
 
@@ -202,7 +202,7 @@ namespace Princes_Escape
        
      
 
-        public Przeciwnik [] get_wrogowie()
+        public List<Przeciwnik>  get_wrogowie()
         {
             return Wrogowie;
         }
