@@ -78,7 +78,6 @@ namespace Princes_Escape
             this.label2.Size = new System.Drawing.Size(167, 187);
             this.label2.TabIndex = 3;
             this.label2.Text = "1";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // progressBar1
             // 
@@ -105,7 +104,6 @@ namespace Princes_Escape
             this.imgObrazek.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.imgObrazek.TabIndex = 0;
             this.imgObrazek.TabStop = false;
-            this.imgObrazek.Click += new System.EventHandler(this.imgObrazek_Click);
             // 
             // timer1
             // 
@@ -126,9 +124,8 @@ namespace Princes_Escape
             this.Name = "Gra";
             this.Text = "Tower Atack";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmMiniPaint_Load);
+            this.Load += new System.EventHandler(this.Gra_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Gra_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMiniPaint_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgObrazek)).EndInit();

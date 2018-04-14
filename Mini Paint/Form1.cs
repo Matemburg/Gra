@@ -63,47 +63,14 @@ namespace Princes_Escape
 
         private void Magia()
         {
-
-         
-
-            bool wygrana = false;
+      
             g.Clear(Color.Transparent);
-
-           
-
-            for (float x = (Width - Height) / 2; x <= Height + ((Width - Height) / 2); x = x + Height / wielkosc_planszy)
-            {
-                for (float y = 0; y < Height; y = y + Height / wielkosc_planszy)
-                {
-                    A.X = (int)x;
-                    A.Y = 0;
-                    B.X = (int)x;
-                    B.Y = Height;
-                    //l.DrawLine(pioro, A, B);
-                    A.X = (Width - Height) / 2;
-                    A.Y = (int)y;
-                    B.X = Width - ((Width - Height) / 2);
-                    B.Y = (int)y;
-                    g.DrawImage(Princes_Escape.Properties.Resources.Ladder__Wood_, PLANSZA.POLA[0, 0].centrumX - 32, PLANSZA.POLA[0, 0].centrumY - 32, 64, 64);
-                    //  l.DrawLine(pioro, A, B);
-
-
-
-
-                }
-            }
-
-
-  
-
+            g.DrawImage(Princes_Escape.Properties.Resources.Ladder__Wood_, PLANSZA.POLA[0, 0].centrumX - 32, PLANSZA.POLA[0, 0].centrumY - 32, 64, 64);
+    
             ////pipi
 
             if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].permission == false)
-            {
                 Princess.back();
-            }
-
-         
 
             if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1])
             {
@@ -114,7 +81,6 @@ namespace Princes_Escape
                         PLANSZA.POLA[i, j].permission = true;
                     }
                 }
-                // MessageBox.Show("Wygrana");
                 stage++;
                 label4.Text = stage.ToString();
                 Princess.restart(0, 0);
@@ -122,11 +88,7 @@ namespace Princes_Escape
 
             }
        
-
-       
-
             ///// Przeszkody
-
 
             for (int w = 0; w < poziom.get_przeszkody()[0].get_Count(); w++)
             {
@@ -135,8 +97,6 @@ namespace Princes_Escape
             }
 
             g.DrawImage(Pipi, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumX - 32, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumY - 32, 64, 64);
-
-
 
             /// WROGOWIE ////////////////////////////////////////////
 
@@ -182,32 +142,21 @@ namespace Princes_Escape
 
 
             ////////////////////// APTECZKI ///////////////////////////
-            for (int a = 0; a < poziom.get_item()[0].get_Count(); a++)
+            for (int a = 0; a < poziom.get_item().Count; a++)
             {
                 if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()]&& poziom.get_item()[a].get_istnieje()==true)
             {
                 poziom.get_item()[a].Akcja(Princess);
-             //   poziom.get_item()[a].used();
-
-
             }
 
-       
                         if (poziom.get_item()[a].get_istnieje() == true)
                             g.DrawImage(poziom.get_item()[a].avatar, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumY - 32, 64, 64);
-
-                   
-
-
-
                     }
 
             for (int i = 0; i < poziom.get_przeszkody()[0].get_Count(); i++)
             {
                 PLANSZA.POLA[poziom.get_przeszkody()[i].get_x(), poziom.get_przeszkody()[i].get_y()].permission = false;
             }
-
-      
 
                 g.DrawImage(Properties.Resources.Trapdoor, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumX - 32, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumY - 32, 64, 64);
                 for (int i = 0; Princess.gethp() > i; i++)
@@ -217,10 +166,7 @@ namespace Princes_Escape
                     imgObrazek.Refresh();
                 }
             
-        
-        
-
-        private void frmMiniPaint_Load(object sender, EventArgs e)
+        private void Gra_Load(object sender, EventArgs e)
         {
             progressBar1.Location = new Point(Width/30,4*Height/5);
             progressBar1.Size = new Size((Width*10)/65, 24);
@@ -228,8 +174,6 @@ namespace Princes_Escape
             label4.Location = new Point(5*Width /6, 4 * Height / 7);
             label2.Parent = imgObrazek;
             label4.Parent = imgObrazek;
-
-        
 
             poziom = new Lvl();
             poziom.Lvl_1();
@@ -252,77 +196,6 @@ namespace Princes_Escape
             Magia();
         }
 
-        private void frmMiniPaint_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)27)
-                System.Windows.Forms.Application.Exit();
-         
-            if (e.KeyChar == 'w' || e.KeyChar =='W')
-                Princess.ruch_up(); 
-            else
-            if (e.KeyChar == 's' || e.KeyChar == 'S')
-                Princess.ruch_down(); 
-            else
-            if (e.KeyChar == 'd' || e.KeyChar == 'D')
-                    Princess.ruch_left();
-            else
-            if (e.KeyChar == 'a' || e.KeyChar == 'A')
-                    Princess.ruch_right();
-            if (e.KeyChar == '+')
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    for (int j = 0; j < 9; j++)
-                    {
-                        PLANSZA.POLA[i, j].permission = true;
-                    }
-                }
-                        poziom.Lvl_2();
-                for (int i = 0; i < poziom.get_przeszkody()[0].get_Count(); i++)
-                {
-                    PLANSZA.POLA[poziom.get_przeszkody()[i].get_x(), poziom.get_przeszkody()[i].get_y()].permission = false;
-                }
-            }
-            if (e.KeyChar == '-')
-            {
-                Princess.restart(0, 0);
-                for (int i = 0; i < 9; i++)
-                {
-                    for (int j = 0; j < 9; j++)
-                    {
-                        PLANSZA.POLA[i, j].permission = true;
-                    }
-                }
-                poziom.Lvl_losuj(stage);
-           
-            }
-            lkrokow++;
-            Magia();
-            
-
-        }
-
-        private void imgObrazek_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Gra_KeyDown(object sender, KeyEventArgs e)
         {
@@ -338,7 +211,34 @@ namespace Princes_Escape
  if (e.KeyCode == Keys.Left)
                 Princess.ruch_right();
 
+            if (e.KeyCode == Keys.Escape)
+                System.Windows.Forms.Application.Exit();
 
+            if (e.KeyCode == Keys.W)
+                Princess.ruch_up();
+            else
+            if (e.KeyCode == Keys.S)
+                Princess.ruch_down();
+            else
+            if (e.KeyCode == Keys.D)
+                Princess.ruch_left();
+            else
+            if (e.KeyCode ==  Keys.A)
+                Princess.ruch_right();
+           
+            if (e.KeyCode == Keys.Subtract)
+            {
+                Princess.restart(0, 0);
+                for (int i = 0; i < 9; i++)
+                {
+                    for (int j = 0; j < 9; j++)
+                    {
+                        PLANSZA.POLA[i, j].permission = true;
+                    }
+                }
+                poziom.Lvl_losuj(stage);
+
+            }
 
 
             lkrokow++;

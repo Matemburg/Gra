@@ -7,7 +7,6 @@ namespace Princes_Escape
 {
     class Item
     {
-        private static int Count = 0;
         private string type;
         public int pozycja_x;
         public int pozycja_y;
@@ -19,10 +18,7 @@ namespace Princes_Escape
             istnieje = false;
         }
 
-        public void restet()
-        {
-            Count = 0;
-        }
+
         public bool get_istnieje()
         {
             return istnieje;
@@ -39,11 +35,6 @@ namespace Princes_Escape
         }
 
 
-        public int get_Count()
-        {
-            return Count;
-        }
-
         public Item (string Type,int X,int Y)
         {
             pozycja_x = X;
@@ -53,7 +44,6 @@ namespace Princes_Escape
             {
                 avatar = Princes_Escape.Properties.Resources.MEDIC;
             }
-            Count++;
         }
 
         public void Akcja (Gracz A)

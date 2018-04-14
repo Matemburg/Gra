@@ -28,7 +28,7 @@ namespace Princes_Escape
         private void checkXP()
         {
             trudnosc = lvl * 5;
-            if (xp == trudnosc)
+            if (xp >= trudnosc)
             {
                 xp = 0;
                 lvl++;
@@ -96,8 +96,6 @@ namespace Princes_Escape
             return trudnosc;
         }
     
-
-
         public void ruch_up()
         {
 
