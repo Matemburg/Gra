@@ -50,7 +50,7 @@ namespace Princes_Escape
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1040, 640);
+            this.panel1.Size = new System.Drawing.Size(1040, 631);
             this.panel1.TabIndex = 0;
             // 
             // label4
@@ -100,7 +100,7 @@ namespace Princes_Escape
             this.imgObrazek.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgObrazek.Location = new System.Drawing.Point(0, 0);
             this.imgObrazek.Name = "imgObrazek";
-            this.imgObrazek.Size = new System.Drawing.Size(1038, 638);
+            this.imgObrazek.Size = new System.Drawing.Size(1038, 629);
             this.imgObrazek.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.imgObrazek.TabIndex = 0;
             this.imgObrazek.TabStop = false;
@@ -116,7 +116,7 @@ namespace Princes_Escape
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::Princes_Escape.Properties.Resources.Lava;
-            this.ClientSize = new System.Drawing.Size(1040, 640);
+            this.ClientSize = new System.Drawing.Size(1040, 631);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;

@@ -269,6 +269,15 @@
   <ItemGroup>
     <None Include="Resources\Button_select.WAV" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pajak %28martwy%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\czaszka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\waz %28martwy%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

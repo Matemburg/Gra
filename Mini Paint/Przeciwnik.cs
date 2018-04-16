@@ -13,6 +13,7 @@ namespace Princes_Escape
         private int pozycja_y;
         private bool istnieje;
         public Image avatar = Princes_Escape.Properties.Resources.spider;
+        public Image avatar_martwy = Princes_Escape.Properties.Resources.pajak_ded;
 
 
 
@@ -26,16 +27,23 @@ namespace Princes_Escape
             atak = 1;
             
         }
-        private Image Dopasuj_typ(string avatar)
+        private void Dopasuj_typ(string Avatar)
         {
-            if(avatar=="wąż")
-                return Princes_Escape.Properties.Resources.wąż;
+            if (Avatar == "wąż")
+            {
+
+                avatar_martwy = Properties.Resources.waz_ded;
+                avatar= Princes_Escape.Properties.Resources.wąż;
+            }
             else
-                return Princes_Escape.Properties.Resources.spider;
+            {
+                avatar = Princes_Escape.Properties.Resources.spider;
+                avatar_martwy = Princes_Escape.Properties.Resources.pajak_ded;
+            }
     }
         public Przeciwnik(int x, int y,int XP,int ATAK, string Avatar)
         {
-            avatar = Dopasuj_typ(Avatar);
+            Dopasuj_typ(Avatar);
             atak = ATAK;
             xp = XP;
             pozycja_x = x;
@@ -46,6 +54,7 @@ namespace Princes_Escape
         public Przeciwnik(int x, int y,bool waz)
         {
             avatar = Princes_Escape.Properties.Resources.wąż;
+            avatar_martwy = Properties.Resources.waz_ded;
             pozycja_x = x;
             pozycja_y = y;
         }

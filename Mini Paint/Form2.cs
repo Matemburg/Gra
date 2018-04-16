@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Media;
+using System.Threading;
 
 namespace Princes_Escape
 {
@@ -17,8 +18,7 @@ namespace Princes_Escape
         public Form2()
         {
             InitializeComponent();
-            simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Menu);
-            simpleSound.Play();
+            
         
             pictureBox1.Image = new Bitmap(300, 100);
             l = Graphics.FromImage(pictureBox1.Image);
@@ -35,7 +35,26 @@ namespace Princes_Escape
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Menu);
+            simpleSound.Play();
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Klik.Play();
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Klik.Play();
+            MessageBox.Show("Nie zaimplementowano");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Klik.Play();
+            MessageBox.Show("Nie zaimplementowano");
         }
     }
 }

@@ -102,6 +102,16 @@ namespace Princes_Escape.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap czaszka {
+            get {
+                object obj = ResourceManager.GetObject("czaszka", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fire {
             get {
                 object obj = ResourceManager.GetObject("Fire", resourceCulture);
@@ -243,6 +253,16 @@ namespace Princes_Escape.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pajak_ded {
+            get {
+                object obj = ResourceManager.GetObject("pajak_ded", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Princes {
             get {
                 object obj = ResourceManager.GetObject("Princes", resourceCulture);
@@ -356,6 +376,16 @@ namespace Princes_Escape.Properties {
         internal static System.Drawing.Bitmap wąż {
             get {
                 object obj = ResourceManager.GetObject("wąż", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap waz_ded {
+            get {
+                object obj = ResourceManager.GetObject("waz_ded", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
