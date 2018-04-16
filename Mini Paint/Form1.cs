@@ -132,7 +132,11 @@ namespace Princes_Escape
                 {
                     g.DrawImage(Properties.Resources.Serce, 15, 15 + i * 65, 64, 64);
                 }
-                    imgObrazek.Refresh();
+            for (int i = Princess.gethp(); Princess.get_hp_max() > i; i++)
+            {
+                g.DrawImage(Properties.Resources.czaszka, 15, 15 + i * 65, 64, 64);
+            }
+            imgObrazek.Refresh();
                 }
             
         private void Gra_Load(object sender, EventArgs e)

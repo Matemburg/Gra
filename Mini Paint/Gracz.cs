@@ -147,6 +147,10 @@ namespace Princes_Escape
             pozycja_y = pozycjapoprzednia_y;
             pozycja_x = pozycjapoprzednia_x;
         }
+        public int get_hp_max()
+        {
+            return maxhp;
+        }
 
     }
 }

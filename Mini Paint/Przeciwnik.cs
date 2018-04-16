@@ -18,6 +18,7 @@ namespace Princes_Escape
 
 
         public Przeciwnik(int x, int y)
+
         {
             
             pozycja_x = x;
@@ -35,12 +36,20 @@ namespace Princes_Escape
                 avatar_martwy = Properties.Resources.waz_ded;
                 avatar= Princes_Escape.Properties.Resources.wąż;
             }
+            else if (Avatar== "Niebieski_wąż")
+            {
+
+                avatar_martwy = Properties.Resources.waz_niebieski_ded;
+                avatar = Princes_Escape.Properties.Resources.waz_niebieski;
+            }
+
             else
             {
                 avatar = Princes_Escape.Properties.Resources.spider;
                 avatar_martwy = Princes_Escape.Properties.Resources.pajak_ded;
             }
     }
+
         public Przeciwnik(int x, int y,int XP,int ATAK, string Avatar)
         {
             Dopasuj_typ(Avatar);
