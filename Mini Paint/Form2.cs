@@ -36,7 +36,7 @@ namespace Princes_Escape
         private void Form2_Load(object sender, EventArgs e)
         {
             simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Menu);
-            simpleSound.Play();
+            simpleSound.PlayLooping();
         }
 
         private void button4_Click(object sender, EventArgs e)

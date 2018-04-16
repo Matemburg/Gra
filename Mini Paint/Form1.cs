@@ -247,7 +247,20 @@ namespace Princes_Escape
                     }
                 }
                 poziom.Lvl_losuj(stage);
+              
+            }
 
+            if (e.KeyCode == Keys.NumPad0)
+            {
+                Princess.restart(0, 0);
+                for (int i = 0; i < 9; i++)
+                {
+                    for (int j = 0; j < 9; j++)
+                    {
+                        PLANSZA.POLA[i, j].permission = true;
+                    }
+                }
+                poziom.wczytaj_z_pliku();
             }
             lkrokow++;
             Rysowanie_i_obliczanie();

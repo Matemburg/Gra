@@ -213,6 +213,23 @@ namespace Princes_Escape.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 0ppaplpla
+        ///0a0p0w0a0
+        ///p0a0w000w
+        ///ppa0ww000
+        ///00aa0pppp
+        ///0a0p0w0a0
+        ///p0a0w000p
+        ///ppa0ww00p
+        ///0a0p0w0a0.
+        /// </summary>
+        internal static string Mapy {
+            get {
+                return ResourceManager.GetString("Mapy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap MEDIC {

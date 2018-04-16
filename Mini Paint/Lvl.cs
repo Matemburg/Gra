@@ -50,8 +50,7 @@ namespace Princes_Escape
             Przeszkadajki.Clear();
             Random random = new Random(DateTime.Now.Millisecond);
             int Liczba_losowa;
-            int c = 0;
-
+     
             int L_przeciwnik = 0;
             int L_apteczka = 0;
             int L_Lava = 0;
@@ -158,5 +157,31 @@ namespace Princes_Escape
             return Przeszkadajki;
         }
 
+        public void wczytaj_z_pliku()
+        {
+            Przedmioty.Clear();
+            Wrogowie.Clear();
+            Przeszkadajki.Clear();
+            int linia= 0;
+            string poziom=Properties.Resources.Mapy;
+            for(int i=0;i<9;i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (poziom[i*9 + j + linia] == 'p')
+                        Wrogowie.Add(new Przeciwnik(j, i));
+                  else  if (poziom[i*9 + j + linia] == 'a')
+                        Przedmioty.Add(new Item("apteczka",j, i));
+                  else  if (poziom[i*9 + j + linia] == 'l')
+                        Przeszkadajki.Add(new Przeszkody("lawa",j, i));
+                    else if (poziom[i * 9 + j + linia] == 'w')
+                        Wrogowie.Add(new Przeciwnik(i, j, 2, 2, "wąż"));
+
+
+                }
+              //linia++;
+
+            }
+        }
     }
 }
