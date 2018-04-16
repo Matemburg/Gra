@@ -175,7 +175,7 @@ namespace Princes_Escape
                   else  if (poziom[i*9 + j + linia] == 'l')
                         Przeszkadajki.Add(new Przeszkody("lawa",j, i));
                     else if (poziom[i * 9 + j + linia] == 'w')
-                        Wrogowie.Add(new Przeciwnik(i, j, 2, 2, "wąż"));
+                        Wrogowie.Add(new Przeciwnik(j, i, 2, 2, "wąż"));
 
 
                 }
