@@ -213,15 +213,7 @@ namespace Princes_Escape.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0ppaplpla
-        ///0a0p0w0a0
-        ///p0a0w000w
-        ///ppa0ww000
-        ///00aa0pppp
-        ///0a0p0w0a0
-        ///p0a0w000p
-        ///ppa0ww00p
-        ///0a0p0w0a0.
+        ///   Looks up a localized string similar to 0ppaplpla0a0p0w0a0p0a0w000wppa0ww00000aa0pppp0a0p0w0a0p0a0w000pppa0ww00p0a0p0w0a0.
         /// </summary>
         internal static string Mapy {
             get {
@@ -273,6 +265,26 @@ namespace Princes_Escape.Properties {
         internal static System.Drawing.Bitmap pajak_ded {
             get {
                 object obj = ResourceManager.GetObject("pajak_ded", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pajak_fioletowy {
+            get {
+                object obj = ResourceManager.GetObject("pajak_fioletowy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pajak_fioletowy_ded {
+            get {
+                object obj = ResourceManager.GetObject("pajak_fioletowy_ded", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

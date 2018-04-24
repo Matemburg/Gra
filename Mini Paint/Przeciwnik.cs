@@ -42,7 +42,12 @@ namespace Princes_Escape
                 avatar_martwy = Properties.Resources.waz_niebieski_ded;
                 avatar = Princes_Escape.Properties.Resources.waz_niebieski;
             }
+            else if (Avatar == "pajak_fioletowy")
+            {
+                avatar_martwy = Properties.Resources.pajak_fioletowy_ded;
+                avatar = Princes_Escape.Properties.Resources.pajak_fioletowy;
 
+            }
             else
             {
                 avatar = Princes_Escape.Properties.Resources.spider;

@@ -77,7 +77,7 @@ namespace Princes_Escape
                             Liczba_losowa = random.Next(2,8);
                     }
                     
-                    if (Liczba_losowa == 2 || Liczba_losowa == 3 || Liczba_losowa == 5 || Liczba_losowa == 4)
+                    if (Liczba_losowa == 2 || Liczba_losowa == 3 || Liczba_losowa == 4 || Liczba_losowa == 5)
                     {
                         if (L_przeciwnik < i+stage)
                         {
@@ -89,6 +89,8 @@ namespace Princes_Escape
                                
                                 else if (Liczba_losowa == 3)
                                     Wrogowie.Add(new Przeciwnik(i, j,3,2, "Niebieski_wąż"));
+                                else if (Liczba_losowa == 4)
+                                    Wrogowie.Add(new Przeciwnik(i, j, 1, 1, "pajak_fioletowy"));
 
                                 else
                                     Wrogowie.Add(new Przeciwnik(i, j));

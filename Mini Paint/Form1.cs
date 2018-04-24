@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
 using System.Media;
+using NAudio.Wave;
 
 namespace Princes_Escape
 {
@@ -142,8 +143,14 @@ namespace Princes_Escape
         private void Gra_Load(object sender, EventArgs e)
         {
             //SoundPlayer Muzyka;
-           // Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
-           // Muzyka.PlayLooping();
+            // Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
+            // Muzyka.PlayLooping();
+         
+            var waveOut = new WaveOut(); // or WaveOutEvent()
+            waveOut.Init(new WaveFileReader(Properties.Resources.Muzyka_2));
+            waveOut.Volume = (float)0.5;
+            waveOut.Play();
+
             progressBar1.Location = new Point(Width/30,4*Height/5);
             progressBar1.Size = new Size((Width*10)/65, 24);
             label2.Location = new Point(Width / 30, 4*Height / 7);

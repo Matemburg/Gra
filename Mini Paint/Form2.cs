@@ -56,5 +56,13 @@ namespace Princes_Escape
             Klik.Play();
             MessageBox.Show("Nie zaimplementowano");
         }
+
+        private void button_edytor_Click(object sender, EventArgs e)
+        {
+            simpleSound.Stop();
+            Klik.Play();
+            new Form3().Show();
+            this.Hide();
+        }
     }
 }

@@ -35,6 +35,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button_edytor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +81,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(54, 176);
+            this.button2.Location = new System.Drawing.Point(54, 221);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(175, 40);
             this.button2.TabIndex = 4;
@@ -94,7 +95,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button3.Location = new System.Drawing.Point(54, 222);
+            this.button3.Location = new System.Drawing.Point(54, 267);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(175, 40);
             this.button3.TabIndex = 5;
@@ -108,13 +109,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Location = new System.Drawing.Point(54, 268);
+            this.button4.Location = new System.Drawing.Point(54, 313);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(175, 40);
             this.button4.TabIndex = 6;
             this.button4.Text = "Wyjście";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button_edytor
+            // 
+            this.button_edytor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_edytor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_edytor.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_edytor.Location = new System.Drawing.Point(54, 176);
+            this.button_edytor.Name = "button_edytor";
+            this.button_edytor.Size = new System.Drawing.Size(175, 40);
+            this.button_edytor.TabIndex = 7;
+            this.button_edytor.Text = "Edytor";
+            this.button_edytor.UseVisualStyleBackColor = true;
+            this.button_edytor.Click += new System.EventHandler(this.button_edytor_Click);
             // 
             // Form2
             // 
@@ -123,6 +138,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(287, 361);
             this.ControlBox = false;
+            this.Controls.Add(this.button_edytor);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -150,5 +166,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_edytor;
     }
 }
