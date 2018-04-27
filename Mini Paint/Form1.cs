@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Media;
 using NAudio.Wave;
+using System.IO;
 
 namespace Princes_Escape
 {
@@ -269,8 +270,40 @@ namespace Princes_Escape
                 }
                 poziom.wczytaj_z_pliku();
             }
+
+            if (e.KeyCode == Keys.NumPad5)
+            {
+                Princess.restart(0, 0);
+                for (int i = 0; i < 9; i++)
+                {
+                    for (int j = 0; j < 9; j++)
+                    {
+                        PLANSZA.POLA[i, j].permission = true;
+                    }
+                }
+                string mapy = File.ReadAllText(@"mapy.txt");
+                poziom.wczytaj_z_pliku(mapy);
+            }
+
             lkrokow++;
             Rysowanie_i_obliczanie();
         }
+
+        public void poziom_z_pliku()
+        {
+            Princess.restart(0, 0);
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    PLANSZA.POLA[i, j].permission = true;
+                }
+            }
+            string mapy = File.ReadAllText(@"mapy.txt");
+            poziom.wczytaj_z_pliku(mapy);
+        }
+
+
+
     }
 }

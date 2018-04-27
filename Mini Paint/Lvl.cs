@@ -164,24 +164,49 @@ namespace Princes_Escape
             Przedmioty.Clear();
             Wrogowie.Clear();
             Przeszkadajki.Clear();
-            int linia= 0;
-            string poziom=Properties.Resources.Mapy;
-            for(int i=0;i<9;i++)
+            int linia = 0;
+            string poziom = Properties.Resources.Mapy;
+            for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    if (poziom[i*9 + j + linia] == 'p')
+                    if (poziom[i * 9 + j + linia] == 'p')
                         Wrogowie.Add(new Przeciwnik(j, i));
-                  else  if (poziom[i*9 + j + linia] == 'a')
-                        Przedmioty.Add(new Item("apteczka",j, i));
-                  else  if (poziom[i*9 + j + linia] == 'l')
-                        Przeszkadajki.Add(new Przeszkody("lawa",j, i));
+                    else if (poziom[i * 9 + j + linia] == 'a')
+                        Przedmioty.Add(new Item("apteczka", j, i));
+                    else if (poziom[i * 9 + j + linia] == 'l')
+                        Przeszkadajki.Add(new Przeszkody("lawa", j, i));
                     else if (poziom[i * 9 + j + linia] == 'w')
                         Wrogowie.Add(new Przeciwnik(j, i, 2, 2, "wąż"));
 
 
                 }
-              //linia++;
+            }
+        }
+
+                 public void wczytaj_z_pliku(string mapa)
+        {
+            Przedmioty.Clear();
+            Wrogowie.Clear();
+            Przeszkadajki.Clear();
+            int linia = 0;
+            string poziom = mapa;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (poziom[i * 9 + j + linia] == 'p')
+                        Wrogowie.Add(new Przeciwnik(j, i));
+                    else if (poziom[i * 9 + j + linia] == 'a')
+                        Przedmioty.Add(new Item("apteczka", j, i));
+                    else if (poziom[i * 9 + j + linia] == 'l')
+                        Przeszkadajki.Add(new Przeszkody("lawa", j, i));
+                    else if (poziom[i * 9 + j + linia] == 'w')
+                        Wrogowie.Add(new Przeciwnik(j, i, 2, 2, "wąż"));
+
+
+                }
+                //linia++;
 
             }
         }

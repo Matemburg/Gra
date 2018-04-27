@@ -80,6 +80,27 @@ namespace Princes_Escape
             File.WriteAllText("mapy.txt", zapis_poziomu);
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Klik.Play();
+            new Form2().Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Klik.Play();
+            zapis_poziomu = new string('0', 0);
+            MessageBox.Show(zapis_poziomu);
+            for (int i = 0; i < 81; i++)
+                zapis_poziomu += poziom[i];
+            File.WriteAllText("mapy.txt", zapis_poziomu);
+            Gra GRA = new Gra();
+            GRA.Show();
+
+            this.Hide();
+        }
+
         private void pictureBox9_Click(object sender, EventArgs e)
         {
             Graphics p9;
@@ -225,47 +246,508 @@ namespace Princes_Escape
 
         private void pictureBox27_Click(object sender, EventArgs e)
         {
-
+            Graphics p27;
+            pictureBox27.Image = new Bitmap(64, 64);
+            p27 = Graphics.FromImage(pictureBox27.Image);
+            rysuj(p27, 18);
         }
 
         private void pictureBox26_Click(object sender, EventArgs e)
         {
-
+            Graphics p26;
+            pictureBox26.Image = new Bitmap(64, 64);
+            p26 = Graphics.FromImage(pictureBox26.Image);
+            rysuj(p26, 19);
         }
 
         private void pictureBox25_Click(object sender, EventArgs e)
         {
-
+            Graphics p25;
+            pictureBox25.Image = new Bitmap(64, 64);
+            p25 = Graphics.FromImage(pictureBox25.Image);
+            rysuj(p25, 20);
         }
 
         private void pictureBox24_Click(object sender, EventArgs e)
         {
-
+            Graphics p24;
+            pictureBox24.Image = new Bitmap(64, 64);
+            p24 = Graphics.FromImage(pictureBox24.Image);
+            rysuj(p24, 21);
         }
 
         private void pictureBox23_Click(object sender, EventArgs e)
         {
-
+            Graphics p23;
+            pictureBox23.Image = new Bitmap(64, 64);
+            p23 = Graphics.FromImage(pictureBox23.Image);
+            rysuj(p23, 22);
         }
 
         private void pictureBox22_Click(object sender, EventArgs e)
         {
-
+            Graphics p22;
+            pictureBox22.Image = new Bitmap(64, 64);
+            p22 = Graphics.FromImage(pictureBox22.Image);
+            rysuj(p22, 23);
         }
 
         private void pictureBox21_Click(object sender, EventArgs e)
         {
-
+            Graphics p21;
+            pictureBox21.Image = new Bitmap(64, 64);
+            p21 = Graphics.FromImage(pictureBox21.Image);
+            rysuj(p21, 24);
         }
 
         private void pictureBox20_Click(object sender, EventArgs e)
         {
-
+            Graphics p20;
+            pictureBox20.Image = new Bitmap(64, 64);
+            p20 = Graphics.FromImage(pictureBox20.Image);
+            rysuj(p20, 25);
         }
 
         private void pictureBox19_Click(object sender, EventArgs e)
         {
-
+            Graphics p19;
+            pictureBox19.Image = new Bitmap(64, 64);
+            p19 = Graphics.FromImage(pictureBox19.Image);
+            rysuj(p19, 26);
         }
+
+        private void pictureBox36_Click(object sender, EventArgs e)
+        {
+            Graphics p36;
+            pictureBox36.Image = new Bitmap(64, 64);
+            p36 = Graphics.FromImage(pictureBox36.Image);
+            rysuj(p36, 27);
+        }
+
+        private void pictureBox35_Click(object sender, EventArgs e)
+        {
+            Graphics p35;
+            pictureBox35.Image = new Bitmap(64, 64);
+            p35 = Graphics.FromImage(pictureBox35.Image);
+            rysuj(p35, 28);
+        }
+
+        private void pictureBox34_Click(object sender, EventArgs e)
+        {
+            Graphics p34;
+            pictureBox34.Image = new Bitmap(64, 64);
+            p34 = Graphics.FromImage(pictureBox34.Image);
+            rysuj(p34, 29);
+        }
+
+        private void pictureBox33_Click(object sender, EventArgs e)
+        {
+            Graphics p33;
+            pictureBox33.Image = new Bitmap(64, 64);
+            p33 = Graphics.FromImage(pictureBox33.Image);
+            rysuj(p33, 30);
+        }
+
+        private void pictureBox32_Click(object sender, EventArgs e)
+        {
+            Graphics p32;
+            pictureBox32.Image = new Bitmap(64, 64);
+            p32 = Graphics.FromImage(pictureBox32.Image);
+            rysuj(p32, 31);
+        }
+
+        private void pictureBox31_Click(object sender, EventArgs e)
+        {
+            Graphics p31;
+            pictureBox31.Image = new Bitmap(64, 64);
+            p31 = Graphics.FromImage(pictureBox31.Image);
+            rysuj(p31, 32);
+        }
+
+        private void pictureBox30_Click(object sender, EventArgs e)
+        {
+            Graphics p30;
+            pictureBox30.Image = new Bitmap(64, 64);
+            p30 = Graphics.FromImage(pictureBox30.Image);
+            rysuj(p30, 33);
+        }
+
+        private void pictureBox29_Click(object sender, EventArgs e)
+        {
+            Graphics p29;
+            pictureBox29.Image = new Bitmap(64, 64);
+            p29 = Graphics.FromImage(pictureBox29.Image);
+            rysuj(p29, 34);
+        }
+
+        private void pictureBox28_Click(object sender, EventArgs e)
+        {
+            Graphics p28;
+            pictureBox28.Image = new Bitmap(64, 64);
+            p28 = Graphics.FromImage(pictureBox28.Image);
+            rysuj(p28, 35);
+        }
+
+        private void pictureBox45_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox45.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox45.Image);
+            rysuj(p3, 36);
+        }
+
+        private void pictureBox44_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox44.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox44.Image);
+            rysuj(p3, 37);
+        }
+
+        private void pictureBox43_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox43.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox43.Image);
+            rysuj(p3, 38);
+        }
+
+        private void pictureBox42_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox42.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox42.Image);
+            rysuj(p3, 39);
+        }
+
+        private void pictureBox41_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox41.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox41.Image);
+            rysuj(p3, 40);
+        }
+
+        private void pictureBox40_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox40.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox40.Image);
+            rysuj(p3, 41);
+        }
+
+        private void pictureBox39_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox39.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox39.Image);
+            rysuj(p3, 42);
+        }
+
+        private void pictureBox38_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox38.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox38.Image);
+            rysuj(p3, 43);
+        }
+
+        private void pictureBox37_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox37.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox37.Image);
+            rysuj(p3, 44);
+        }
+
+        private void pictureBox54_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox54.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox54.Image);
+            rysuj(p3, 45);
+        }
+
+        private void pictureBox53_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox53.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox53.Image);
+            rysuj(p3, 46);
+        }
+
+        private void pictureBox52_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox52.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox52.Image);
+            rysuj(p3, 47);
+        }
+
+        private void pictureBox51_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox51.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox51.Image);
+            rysuj(p3, 48);
+        }
+
+        private void pictureBox50_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox50.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox50.Image);
+            rysuj(p3, 49);
+        }
+
+        private void pictureBox49_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox49.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox49.Image);
+            rysuj(p3, 50);
+        }
+
+        private void pictureBox48_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox48.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox48.Image);
+            rysuj(p3, 51);
+        }
+
+        private void pictureBox47_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox47.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox47.Image);
+            rysuj(p3, 52);
+        }
+
+        private void pictureBox46_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox46.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox46.Image);
+            rysuj(p3, 53);
+        }
+
+        private void pictureBox63_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox63.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox63.Image);
+            rysuj(p3, 54);
+        }
+
+        private void pictureBox62_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox62.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox62.Image);
+            rysuj(p3, 55);
+        }
+
+        private void pictureBox61_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox61.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox61.Image);
+            rysuj(p3, 56);
+        }
+
+        private void pictureBox60_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox60.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox60.Image);
+            rysuj(p3, 57);
+        }
+
+        private void pictureBox59_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox59.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox59.Image);
+            rysuj(p3, 58);
+        }
+
+        private void pictureBox58_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox58.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox58.Image);
+            rysuj(p3, 59);
+        }
+
+        private void pictureBox57_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox57.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox57.Image);
+            rysuj(p3, 60);
+        }
+
+        private void pictureBox56_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox56.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox56.Image);
+            rysuj(p3, 61);
+        }
+
+        private void pictureBox55_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox55.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox55.Image);
+            rysuj(p3, 62);
+        }
+
+        private void pictureBox72_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox72.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox72.Image);
+            rysuj(p3, 63);
+        }
+
+        private void pictureBox71_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox71.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox71.Image);
+            rysuj(p3, 64);
+        }
+
+        private void pictureBox70_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox70.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox70.Image);
+            rysuj(p3, 65);
+        }
+
+        private void pictureBox69_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox69.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox69.Image);
+            rysuj(p3, 66);
+        }
+
+        private void pictureBox68_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox68.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox68.Image);
+            rysuj(p3, 67);
+        }
+
+        private void pictureBox67_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox67.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox67.Image);
+            rysuj(p3, 68);
+        }
+
+        private void pictureBox66_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox66.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox66.Image);
+            rysuj(p3, 69);
+        }
+
+        private void pictureBox65_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox65.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox65.Image);
+            rysuj(p3, 70);
+        }
+
+        private void pictureBox64_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox64.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox64.Image);
+            rysuj(p3, 71);
+        }
+
+        private void pictureBox81_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox81.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox81.Image);
+            rysuj(p3, 72);
+        }
+
+        private void pictureBox80_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox80.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox80.Image);
+            rysuj(p3, 73);
+        }
+
+        private void pictureBox79_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox79.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox79.Image);
+            rysuj(p3, 74);
+        }
+
+        private void pictureBox78_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox78.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox78.Image);
+            rysuj(p3, 75);
+        }
+
+        private void pictureBox77_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox77.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox77.Image);
+            rysuj(p3, 76);
+        }
+
+        private void pictureBox76_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox76.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox76.Image);
+            rysuj(p3, 77);
+        }
+
+        private void pictureBox75_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox75.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox75.Image);
+            rysuj(p3, 78);
+        }
+
+        private void pictureBox74_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox74.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox74.Image);
+            rysuj(p3, 79);
+        }
+
+        private void pictureBox73_Click(object sender, EventArgs e)
+        {
+            Graphics p3;
+            pictureBox73.Image = new Bitmap(64, 64);
+            p3 = Graphics.FromImage(pictureBox73.Image);
+            rysuj(p3, 80);
+        }
+
+
     }
 }
