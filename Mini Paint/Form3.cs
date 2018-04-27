@@ -95,7 +95,7 @@ namespace Princes_Escape
             for (int i = 0; i < 81; i++)
                 zapis_poziomu += poziom[i];
             File.WriteAllText("mapy.txt", zapis_poziomu);
-            Gra GRA = new Gra();
+            Gra GRA = new Gra(true);
             GRA.Show();
 
             this.Hide();

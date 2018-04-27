@@ -25,11 +25,22 @@ namespace Princes_Escape
         private int lvl_Princess;
         private int stage = 0;
         private int lkrokow = 0;
+        private bool innyPoziom = false;
 
         public Gra()
         {
             InitializeComponent();
         }
+        public Gra(bool edytor)
+        {
+            if (edytor == true)
+            {
+                innyPoziom = true;
+            }
+            InitializeComponent();
+
+        }
+
 
         private void Rysowanie_i_obliczanie()
         {
@@ -159,9 +170,16 @@ namespace Princes_Escape
             label2.Parent = imgObrazek;
             label4.Parent = imgObrazek;
 
-            poziom = new Lvl();
-            poziom.Lvl_1();
-           
+            if (innyPoziom==false)
+            {
+                poziom = new Lvl();
+                poziom.Lvl_1();
+            }
+            else
+            {
+                poziom = new Lvl();
+                poziom_z_pliku();
+            }
             PLANSZA = new Plansza(Height, wielkosc_planszy, (Width - Height) / 2);
             for (int i = 0; i < poziom.get_przeszkody().Count; i++)
             {
@@ -291,14 +309,6 @@ namespace Princes_Escape
 
         public void poziom_z_pliku()
         {
-            Princess.restart(0, 0);
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    PLANSZA.POLA[i, j].permission = true;
-                }
-            }
             string mapy = File.ReadAllText(@"mapy.txt");
             poziom.wczytaj_z_pliku(mapy);
         }
