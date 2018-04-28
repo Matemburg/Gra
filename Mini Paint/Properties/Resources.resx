@@ -238,4 +238,7 @@
   <data name="Poziom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Poziom.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
   </data>
+  <data name="Motivated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Motivated.mp3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

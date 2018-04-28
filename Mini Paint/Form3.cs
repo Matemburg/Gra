@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace Princes_Escape
 {
     public partial class Form3 : Form
     {
+        WaveOut muzyka = new WaveOut();
         public SoundPlayer Klik = new SoundPlayer(Properties.Resources.Button_select);
         string [] poziom = new string[81];
         string zapis_poziomu;
@@ -39,11 +41,31 @@ namespace Princes_Escape
                 p.DrawImage(Properties.Resources.Lava, 0, 0);
                 poziom[numer] = "l";   
             }
+            if (radioButton4.Checked)
+            {
+                p.DrawImage(Properties.Resources.wąż, 0, 0);
+                poziom[numer] = "w";
+            }
+            if (radioButton5.Checked)
+            {
+                p.DrawImage(Properties.Resources.wąż, 0, 0);
+                poziom[numer] = "5";
+            }
 
         }
 
         private void Form3_Load(object sender, EventArgs e)
         {
+         //   var waveOut = new WaveOut(); // or WaveOutEvent()
+                                         //  waveOut.Init(new WaveFileReader(Properties.Resources.mo));
+                                         // waveOut.Volume = (float)0.5;
+                                         //  waveOut.Play();
+
+            MemoryStream mp3file = new MemoryStream(Properties.Resources.Motivated);
+            Mp3FileReader mp3reader = new Mp3FileReader(mp3file);
+     
+            muzyka.Init(mp3reader);
+            muzyka.Play();
             zapis_poziomu += "0";
             for (int i = 0; i < 81; i++)
                 poziom[i] = "0";
@@ -91,9 +113,10 @@ namespace Princes_Escape
         {
             Klik.Play();
             zapis_poziomu = new string('0', 0);
-            MessageBox.Show(zapis_poziomu);
+            //MessageBox.Show(zapis_poziomu);
             for (int i = 0; i < 81; i++)
                 zapis_poziomu += poziom[i];
+            muzyka.Pause();
             File.WriteAllText("mapy.txt", zapis_poziomu);
             Gra GRA = new Gra(true);
             GRA.Show();
@@ -747,7 +770,5 @@ namespace Princes_Escape
             p3 = Graphics.FromImage(pictureBox73.Image);
             rysuj(p3, 80);
         }
-
-
     }
 }

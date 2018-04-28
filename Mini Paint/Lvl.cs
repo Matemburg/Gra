@@ -200,7 +200,30 @@ namespace Princes_Escape
                     else if (poziom[i * 9 + j + linia] == 'a')
                         Przedmioty.Add(new Item("apteczka", j, i));
                     else if (poziom[i * 9 + j + linia] == 'l')
-                        Przeszkadajki.Add(new Przeszkody("lawa", j, i));
+                    {
+                        Random losowanie_przeszkody = new Random(DateTime.Now.Millisecond);
+                        int los = losowanie_przeszkody.Next(0, 10);
+                        if (los == 1)
+                            Przeszkadajki.Add(new Przeszkody("lawa", j, i));
+                        else if (los == 1)
+                            Przeszkadajki.Add(new Przeszkody("stone1", j, i));
+                        else if (los == 3)
+                            Przeszkadajki.Add(new Przeszkody("stone2", j, i));
+                        else if (los == 4)
+                            Przeszkadajki.Add(new Przeszkody("coffin", j, i));
+                        else if (los == 5)
+                            Przeszkadajki.Add(new Przeszkody("column", j, i));
+                        else if (los == 6)
+                            Przeszkadajki.Add(new Przeszkody("ccolumn", j, i));
+                        else if (los == 7)
+                            Przeszkadajki.Add(new Przeszkody("totem", j, i));
+                        else if (los == 8)
+                            Przeszkadajki.Add(new Przeszkody("mstone", j, i));
+                        else if (los == 9)
+                            Przeszkadajki.Add(new Przeszkody("pillar", j, i));
+                        else
+                            Przeszkadajki.Add(new Przeszkody("stone3", j, i));
+                    }
                     else if (poziom[i * 9 + j + linia] == 'w')
                         Wrogowie.Add(new Przeciwnik(j, i, 2, 2, "wąż"));
 
