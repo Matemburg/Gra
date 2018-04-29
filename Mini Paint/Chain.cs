@@ -6,17 +6,24 @@ namespace Princes_Escape
 {
     class Chain
     {
-       private int x;
-       private int y;
-       public string type;
+       public int x;
+       public int y;
+       public string rodzaj;
        public int nr;
 
         public Chain(int xx,int yy)
         {
             x = xx;
             y = yy;
-            type = " ";
+            rodzaj = "0";
             nr = -1;
+        }
+        public Chain(int xx, int yy,string typ, int numer)
+        {
+            x = xx;
+            y = yy;
+            rodzaj = typ;
+            nr = numer;
         }
 
     }
