@@ -48,8 +48,8 @@ namespace Princes_Escape
             }
             if (radioButton5.Checked)
             {
-                p.DrawImage(Properties.Resources.wąż, 0, 0);
-                poziom[numer] = "5";
+                p.DrawImage(Properties.Resources.Empty, 0, 0);
+                poziom[numer] = "0";
             }
 
         }
