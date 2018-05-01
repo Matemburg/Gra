@@ -9,8 +9,8 @@ namespace Princes_Escape
 
         private int pozycja_x;
         private int pozycja_y;
-        private int pozycjapoprzednia_x;
-        private int pozycjapoprzednia_y;
+        public int pozycjapoprzednia_x;
+        public int pozycjapoprzednia_y;
         private int wielkosc_planszy;
         private int maxhp = 3;
         private int hp = 3;

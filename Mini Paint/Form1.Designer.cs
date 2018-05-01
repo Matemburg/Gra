@@ -35,6 +35,7 @@ namespace Princes_Escape
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.imgObrazek = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgObrazek)).BeginInit();
             this.SuspendLayout();
@@ -110,6 +111,10 @@ namespace Princes_Escape
             this.timer1.Enabled = true;
             this.timer1.Interval = 75;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // Gra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,6 +145,7 @@ namespace Princes_Escape
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Media;
 using NAudio.Wave;
 using System.IO;
+using System.Threading;
 
 namespace Princes_Escape
 {
@@ -27,6 +28,7 @@ namespace Princes_Escape
         private int lkrokow = 0;
         private bool innyPoziom = false;
         private List<Chain> Lancuch = new List<Chain>();
+        Thread thread1 = new Thread(Muzyka.Play);
 
         public Gra()
         {
@@ -45,6 +47,7 @@ namespace Princes_Escape
 
         private void Rysowanie_i_obliczanie()
         {
+            bool back = false;
             bool lancuch_natysowany = false;
             g.Clear(Color.Transparent);
             g.DrawImage(Princes_Escape.Properties.Resources.Ladder__Wood_, PLANSZA.POLA[0, 0].centrumX - 32, PLANSZA.POLA[0, 0].centrumY - 32, 64, 64);
@@ -52,8 +55,10 @@ namespace Princes_Escape
             ////pipi
 
             if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].permission == false)
+            {
                 Princess.back();
-
+                back = true;
+            }
             if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1])
             {
                 for (int i = 0; i < 9; i++)
@@ -156,14 +161,35 @@ namespace Princes_Escape
             {
                 g.DrawImage(Properties.Resources.czaszka, 15, 15 + i * 65, 64, 64);
             }
+            if (back == false) {
+                if (Princess.pozycjapoprzednia_x != Princess.get_x() || Princess.pozycjapoprzednia_y != Princess.get_y())
+                {
+                    if (lancuch_natysowany == false)
+                    {
+                        if (Lancuch.Count == 0)
+                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0");
+                        else
+                        {
+                            // int x = Lancuch[Lancuch.Count - 1].x;
+                            //  MessageBox.Show(x.ToString());
+                            if (Lancuch[Lancuch.Count - 1].x == Princess.get_x() && Lancuch[Lancuch.Count - 1].y == Princess.get_y())
+                            {
+                                // MessageBox.Show(Lancuch.Count.ToString());
+                                Lancuch.RemoveRange(Lancuch.Count - 1, 1);
+                                if (Lancuch.Count != 0)
+                                    PLANSZA.POLA[Lancuch[Lancuch.Count - 1].x, Lancuch[Lancuch.Count - 1].y].permission = true;
 
-            if (lancuch_natysowany == false)
-            {
-                
-                    lancuch_dodaj(Princess.get_x(), Princess.get_y(), -1, "0");
-                
+                            }
+                            else
+                            {
+                                lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0");
+                                PLANSZA.POLA[Lancuch[Lancuch.Count - 1].x, Lancuch[Lancuch.Count - 1].y].permission = false;
+                            }
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < Lancuch.Count-1; i++)
+            for (int i = 0; i < Lancuch.Count; i++)
             {
                 g.DrawImage(Properties.Resources.stairs, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - 32, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - 32, 64, 64);
               
@@ -176,12 +202,9 @@ namespace Princes_Escape
             //SoundPlayer Muzyka;
             // Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
             // Muzyka.PlayLooping();
-         
-            var waveOut = new WaveOut(); // or WaveOutEvent()
-            waveOut.Init(new WaveFileReader(Properties.Resources.Muzyka_2));
-            waveOut.Volume = (float)0.5;
-            waveOut.Play();
 
+
+            thread1.Start();
             progressBar1.Location = new Point(Width/30,4*Height/5);
             progressBar1.Size = new Size((Width*10)/65, 24);
             label2.Location = new Point(Width / 30, 4*Height / 7);
@@ -263,10 +286,12 @@ namespace Princes_Escape
                 Princess.ruch_right();
             Krok.Play();
         }
- 
-            if (e.KeyCode == Keys.Escape)
-                System.Windows.Forms.Application.Exit();
 
+            if (e.KeyCode == Keys.Escape)
+            {
+                thread1.Abort();
+                System.Windows.Forms.Application.Exit();
+            }
             if (e.KeyCode == Keys.W) { 
                 Princess.ruch_up();
                 Krok.Play();
@@ -338,7 +363,9 @@ namespace Princes_Escape
             poziom.wczytaj_z_pliku(mapy);
         }
 
-
-
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+      
+        }
     }
 }
