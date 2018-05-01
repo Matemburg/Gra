@@ -54,5 +54,13 @@ namespace Princes_Escape
                 istnieje = false;
             }
         }
-    }
+        public void AntyAkcja(Gracz A)
+        {
+            if (type == "apteczka")
+            {
+                A.lecz(-1);
+                istnieje = true;
+            }
+        }
+}
 }

@@ -86,6 +86,12 @@ namespace Princes_Escape
             istnieje = false;
             
         }
+        public void wskrzes()
+        {
+
+            istnieje = true;
+
+        }
 
         public int get_x()
         {

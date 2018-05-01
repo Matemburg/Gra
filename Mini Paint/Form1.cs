@@ -70,8 +70,8 @@ namespace Princes_Escape
                 }
                 stage++;
                 label4.Text = stage.ToString();
-                Princess.restart(0, 0);
-                Lancuch.RemoveRange(0, Lancuch.Count);
+                Princess.restart();
+                Lancuch.Clear();
                 poziom.Lvl_losuj(stage);
 
             }
@@ -80,7 +80,6 @@ namespace Princes_Escape
 
             for (int w = 0; w < poziom.get_przeszkody().Count; w++)
             {
-
                 g.DrawImage(poziom.get_przeszkody()[w].avatar, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumY - 32, 64, 64);
             }
 
@@ -117,19 +116,16 @@ namespace Princes_Escape
                         simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Kill);
                         simpleSound.Play();
                         poziom.get_wrogowie()[w].zabij();
-                        lancuch_dodaj(Princess.get_x(), Princess.get_y(), w, "przeciwnik");
-                        lancuch_natysowany = true;
+                        if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() || Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
+                        {
+                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, w, "przeciwnik");
+                            lancuch_natysowany = true;
+                        }
                     }
                 }
             }
 
-            for (int w = 0; w < poziom.get_wrogowie().Count; w++)
-            {
-                if (poziom.get_wrogowie()[w].get_istnieje() == true)
-                    g.DrawImage(poziom.get_wrogowie()[w].avatar, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
-                else
-                    g.DrawImage(poziom.get_wrogowie()[w].avatar_martwy, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
-            }
+ 
 
 
             ////////////////////// APTECZKI ///////////////////////////
@@ -138,12 +134,12 @@ namespace Princes_Escape
                 if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()] && poziom.get_item()[a].get_istnieje() == true)
                 {
                     poziom.get_item()[a].Akcja(Princess);
-                    lancuch_dodaj(Princess.get_x(), Princess.get_y(), a, "item");
-                    lancuch_natysowany = true;
+                    if (Princess.pozycjapoprzednia_x == poziom.get_item()[a].get_x() || Princess.pozycjapoprzednia_y == poziom.get_item()[a].get_y())
+                    {
+                        lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, a, "item");
+                        lancuch_natysowany = true;
+                    }
                 }
-
-                if (poziom.get_item()[a].get_istnieje() == true)
-                    g.DrawImage(poziom.get_item()[a].avatar, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumY - 32, 64, 64);
             }
 
             for (int i = 0; i < poziom.get_przeszkody().Count; i++)
@@ -153,14 +149,7 @@ namespace Princes_Escape
             g.DrawImage(Pipi, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumX - 32, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumY - 32, 64, 64);
 
             g.DrawImage(Properties.Resources.Trapdoor, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumX - 32, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumY - 32, 64, 64);
-            for (int i = 0; Princess.gethp() > i; i++)
-            {
-                g.DrawImage(Properties.Resources.Serce, 15, 15 + i * 65, 64, 64);
-            }
-            for (int i = Princess.gethp(); Princess.get_hp_max() > i; i++)
-            {
-                g.DrawImage(Properties.Resources.czaszka, 15, 15 + i * 65, 64, 64);
-            }
+            
             if (back == false) {
                 if (Princess.pozycjapoprzednia_x != Princess.get_x() || Princess.pozycjapoprzednia_y != Princess.get_y())
                 {
@@ -175,20 +164,54 @@ namespace Princes_Escape
                             if (Lancuch[Lancuch.Count - 1].x == Princess.get_x() && Lancuch[Lancuch.Count - 1].y == Princess.get_y())
                             {
                                 // MessageBox.Show(Lancuch.Count.ToString());
+                                if (Lancuch[Lancuch.Count - 1].rodzaj == "przeciwnik")
+                                {
+                                    poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].wskrzes();
+                                    Princess.lecz(poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].atak);
+                                    Princess.addXP(-(poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].xp));
+                                }
+                                if (Lancuch[Lancuch.Count - 1].rodzaj == "item")
+                                {
+                                    poziom.get_item()[Lancuch[Lancuch.Count - 1].nr].AntyAkcja(Princess);
+                                }
+
                                 Lancuch.RemoveRange(Lancuch.Count - 1, 1);
                                 if (Lancuch.Count != 0)
                                     PLANSZA.POLA[Lancuch[Lancuch.Count - 1].x, Lancuch[Lancuch.Count - 1].y].permission = true;
+
 
                             }
                             else
                             {
                                 lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0");
-                                PLANSZA.POLA[Lancuch[Lancuch.Count - 1].x, Lancuch[Lancuch.Count - 1].y].permission = false;
+                                PLANSZA.POLA[Lancuch[Lancuch.Count - 2].x, Lancuch[Lancuch.Count - 2].y].permission = false;
                             }
                         }
                     }
                 }
             }
+
+            for (int i = 0; Princess.gethp() > i; i++)
+            {
+                g.DrawImage(Properties.Resources.Serce, 15, 15 + i * 65, 64, 64);
+            }
+            for (int i = Princess.gethp(); Princess.get_hp_max() > i; i++)
+            {
+                g.DrawImage(Properties.Resources.czaszka, 15, 15 + i * 65, 64, 64);
+            }
+            for (int a = 0; a < poziom.get_item().Count; a++)
+            {
+                if (poziom.get_item()[a].get_istnieje() == true)
+                    g.DrawImage(poziom.get_item()[a].avatar, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumY - 32, 64, 64);
+            }
+            for (int w = 0; w < poziom.get_wrogowie().Count; w++)
+            {
+                if (poziom.get_wrogowie()[w].get_istnieje() == true)
+                    g.DrawImage(poziom.get_wrogowie()[w].avatar, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
+                else
+                    g.DrawImage(poziom.get_wrogowie()[w].avatar_martwy, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
+            }
+
             for (int i = 0; i < Lancuch.Count; i++)
             {
                 g.DrawImage(Properties.Resources.stairs, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - 32, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - 32, 64, 64);
@@ -314,7 +337,9 @@ namespace Princes_Escape
 
             if (e.KeyCode == Keys.Subtract)
             {
-                Princess.restart(0, 0);
+                Princess.restart();
+                Lancuch.Clear();
+              
                 for (int i = 0; i < 9; i++)
                 {
                     for (int j = 0; j < 9; j++)

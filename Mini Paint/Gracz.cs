@@ -46,6 +46,13 @@ namespace Princes_Escape
             pozycja_x = x;
             pozycja_y = y;
         }
+        public void restart()
+        {
+            pozycja_x = 0;
+            pozycja_y = 0;
+            pozycjapoprzednia_x = 0;
+            pozycjapoprzednia_y = 0;
+        }
 
         public Gracz(int x_start, int y_start, int Wielkosc_Planszy)
         {
