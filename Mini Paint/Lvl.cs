@@ -54,41 +54,42 @@ namespace Princes_Escape
             int L_przeciwnik = 0;
             int L_apteczka = 0;
             int L_Lava = 0;
+            int L_monet = 0;
 
             for (int i = 0; i < 9; i++)
                 {
                  L_przeciwnik--;
                  L_apteczka--;
                 for (int j = 0; j < 9; j++)
-                    {
-                    Liczba_losowa = random.Next(8);
+                {
+                    Liczba_losowa = random.Next(10);
                     if (i == 0 && j == 0)
                     { }
                     else if (i == 8 && j == 8)
                     { }
                     else if (Liczba_losowa == 1)
                     {
-                        if (L_apteczka < (2*i)-stage)
+                        if (L_apteczka < (2 * i) - stage)
                         {
                             Przedmioty.Add(new Item("apteczka", i, j));
                             L_apteczka++;
                         }
                         else
-                            Liczba_losowa = random.Next(2,8);
+                            Liczba_losowa = random.Next(2, 8);
                     }
-                    
+
                     if (Liczba_losowa == 2 || Liczba_losowa == 3 || Liczba_losowa == 4 || Liczba_losowa == 5)
                     {
-                        if (L_przeciwnik < i+stage)
+                        if (L_przeciwnik < i + stage)
                         {
                             if (j > 2 || i > 1)
 
                             {
-                                if(Liczba_losowa == 2)
-                                Wrogowie.Add(new Przeciwnik(i, j, 2, 2, "wąż"));
-                               
+                                if (Liczba_losowa == 2)
+                                    Wrogowie.Add(new Przeciwnik(i, j, 2, 2, "wąż"));
+
                                 else if (Liczba_losowa == 3)
-                                    Wrogowie.Add(new Przeciwnik(i, j,3,2, "Niebieski_wąż"));
+                                    Wrogowie.Add(new Przeciwnik(i, j, 3, 2, "Niebieski_wąż"));
                                 else if (Liczba_losowa == 4)
                                     Wrogowie.Add(new Przeciwnik(i, j, 1, 1, "pajak_fioletowy"));
 
@@ -99,21 +100,21 @@ namespace Princes_Escape
                             }
                         }
                         else
-                            Liczba_losowa = random.Next(6, 8);
+                            Liczba_losowa = random.Next(6, 10);
                     }
 
-                     if (Liczba_losowa == 6 || Liczba_losowa == 8)
+                    if (Liczba_losowa == 6 || Liczba_losowa == 7 || Liczba_losowa == 8)
                     {
                         if (j < 2 || i < 2)
                         {
                             if (j < 7 || i < 7)
                             {
-                                if (L_Lava < 2*i)
+                                if (L_Lava < 2 * i)
                                 {
                                     Random losowanie_przeszkody = new Random(DateTime.Now.Millisecond);
                                     int los = losowanie_przeszkody.Next(0, 10);
                                     if (los == 1)
-                                         Przeszkadajki.Add(new Przeszkody("lawa", i, j));
+                                        Przeszkadajki.Add(new Przeszkody("lawa", i, j));
                                     else if (los == 1)
                                         Przeszkadajki.Add(new Przeszkody("stone1", i, j));
                                     else if (los == 3)
@@ -125,19 +126,25 @@ namespace Princes_Escape
                                     else if (los == 6)
                                         Przeszkadajki.Add(new Przeszkody("ccolumn", i, j));
                                     else if (los == 7)
-                                        Przeszkadajki.Add( new Przeszkody("totem", i, j));
+                                        Przeszkadajki.Add(new Przeszkody("totem", i, j));
                                     else if (los == 8)
                                         Przeszkadajki.Add(new Przeszkody("mstone", i, j));
                                     else if (los == 9)
                                         Przeszkadajki.Add(new Przeszkody("pillar", i, j));
                                     else
-                                        Przeszkadajki.Add(new Przeszkody("stone3", i, j)); 
+                                        Przeszkadajki.Add(new Przeszkody("stone3", i, j));
                                     L_Lava++;
                                 }
                             }
                         }
                     }
-                    }
+                    if (Liczba_losowa == 9)
+                        if (L_monet < i-4)
+                        {
+                            Przedmioty.Add(new Item("moneta", i, j));
+                            L_monet++;
+                        }
+                }
                  
                 }
             }

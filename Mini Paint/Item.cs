@@ -44,6 +44,10 @@ namespace Princes_Escape
             {
                 avatar = Princes_Escape.Properties.Resources.MEDIC;
             }
+            if (type == "moneta")
+            {
+                avatar = Princes_Escape.Properties.Resources.moneta_1;
+            }
         }
 
         public void Akcja (Gracz A)
@@ -53,12 +57,24 @@ namespace Princes_Escape
                 A.lecz(1);
                 istnieje = false;
             }
+
+            if (type == "moneta")
+            {
+                A.dajkase(1);
+                istnieje = false;
+            }
+
         }
         public void AntyAkcja(Gracz A)
         {
             if (type == "apteczka")
             {
                 A.lecz(-1);
+                istnieje = true;
+            }
+            if (type == "moneta")
+            {
+                A.dajkase(-1);
                 istnieje = true;
             }
         }

@@ -17,6 +17,7 @@ namespace Princes_Escape
         private int xp = 0;
         private int lvl = 1;
         private int trudnosc;
+        public int monety = 0;
 
 
         public void addXP(int a)
@@ -39,6 +40,11 @@ namespace Princes_Escape
                 
                 hp = maxhp;
             }
+        }
+        
+        public void dajkase(int i)
+        {
+            monety +=  i;
         }
 
         public void restart(int x, int y)

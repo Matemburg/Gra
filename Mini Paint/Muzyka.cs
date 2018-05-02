@@ -18,8 +18,12 @@ namespace Princes_Escape
             waveOut.Init(new WaveFileReader(Properties.Resources.Muzyka_2));
             waveOut.Volume = (float)0.5;
             waveOut.Play();
-            while(true)
-            Thread.Sleep(20);
+            int i = 0;
+            while (true)
+            {
+                i++;
+            }
+                
         }
     }
 }

@@ -47,6 +47,8 @@ namespace Princes_Escape
 
         private void Rysowanie_i_obliczanie()
         {
+             // thread1.GetApartmentState();
+           // backgroundWorker1.InitializeLifetimeService();
             bool back = false;
             bool lancuch_natysowany = false;
             g.Clear(Color.Transparent);
@@ -108,7 +110,9 @@ namespace Princes_Escape
 
                         if (Princess.gethp() == 0)
                         {
+
                             MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
+                            thread1.Abort();
                             System.Windows.Forms.Application.Exit();
                         }
 
@@ -190,7 +194,7 @@ namespace Princes_Escape
                     }
                 }
             }
-
+            label3.Text = Princess.monety.ToString();         
             for (int i = 0; Princess.gethp() > i; i++)
             {
                 g.DrawImage(Properties.Resources.Serce, 15, 15 + i * 65, 64, 64);
@@ -228,6 +232,18 @@ namespace Princes_Escape
 
 
             thread1.Start();
+            //backgroundWorker1.RunWorkerAsync();
+            pictureBox2.Parent = imgObrazek;
+            pictureBox3.Parent = imgObrazek;
+            label2.Parent = imgObrazek;
+            label3.Parent = imgObrazek;
+            label1.Parent = imgObrazek;
+            pictureBox1.Location = new Point(Width - 3 * 64 - 3 * 5, Height - 74);
+            pictureBox1.Image = new Bitmap(64, 64);
+            Graphics p1 = Graphics.FromImage(pictureBox1.Image);
+            pictureBox1.Parent = imgObrazek;
+            p1.Clear(Color.Transparent);
+            p1.DrawImage(Properties.Resources.MEDIC, 0, 0, 64, 64);
             progressBar1.Location = new Point(Width/30,4*Height/5);
             progressBar1.Size = new Size((Width*10)/65, 24);
             label2.Location = new Point(Width / 30, 4*Height / 7);
@@ -390,7 +406,17 @@ namespace Princes_Escape
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-      
+            Muzyka.Play();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (Princess.monety >= 2)
+            {
+                Princess.dajkase(-2);
+                Princess.lecz(1);
+                Rysowanie_i_obliczanie();
+            }
         }
     }
 }
