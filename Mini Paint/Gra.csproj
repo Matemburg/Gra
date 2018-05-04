@@ -324,6 +324,12 @@
   <ItemGroup>
     <None Include="Resources\moneta 1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\katana.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arc-d%27archer-48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

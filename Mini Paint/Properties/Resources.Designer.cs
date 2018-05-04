@@ -70,6 +70,15 @@ namespace Princes_Escape.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string bv {
+            get {
+                return ResourceManager.GetString("bv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Coffin {
@@ -125,6 +134,16 @@ namespace Princes_Escape.Properties {
         internal static System.Drawing.Bitmap Fire {
             get {
                 object obj = ResourceManager.GetObject("Fire", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap katana {
+            get {
+                object obj = ResourceManager.GetObject("katana", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -218,6 +237,16 @@ namespace Princes_Escape.Properties {
         internal static System.Drawing.Bitmap Lava {
             get {
                 object obj = ResourceManager.GetObject("Lava", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap łuk {
+            get {
+                object obj = ResourceManager.GetObject("łuk", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -405,6 +434,15 @@ namespace Princes_Escape.Properties {
             get {
                 object obj = ResourceManager.GetObject("Stone3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         
