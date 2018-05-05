@@ -18,6 +18,7 @@ namespace Princes_Escape
         private int lvl = 1;
         private int trudnosc;
         public int monety = 0;
+        public bool zmiana_poloenia = false; // wykorzystywane przy lancuchu przy wychodzenniu za krawędź mapy
 
 
         public void addXP(int a)
@@ -117,6 +118,7 @@ namespace Princes_Escape
                 pozycjapoprzednia_x = pozycja_x;
                 pozycjapoprzednia_y = pozycja_y;
                 pozycja_y--;
+                zmiana_poloenia = true;
             }
         }
 
@@ -128,6 +130,7 @@ namespace Princes_Escape
                 pozycjapoprzednia_x = pozycja_x;
                 pozycjapoprzednia_y = pozycja_y;
                 pozycja_y++;
+                zmiana_poloenia = true;
             }
 
         }
@@ -140,6 +143,7 @@ namespace Princes_Escape
                 pozycjapoprzednia_x = pozycja_x;
                 pozycjapoprzednia_y = pozycja_y;
                 pozycja_x--;
+                zmiana_poloenia = true;
             }
 
         }
@@ -152,6 +156,7 @@ namespace Princes_Escape
                 pozycjapoprzednia_x = pozycja_x;
                 pozycjapoprzednia_y = pozycja_y;
                 pozycja_x++;
+                zmiana_poloenia = true;
             }
 
         }

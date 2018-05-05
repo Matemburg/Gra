@@ -183,6 +183,7 @@ namespace Princes_Escape
                                         poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].wskrzes();
                                         Princess.lecz(poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].atak);
                                         Princess.addXP(-(poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].xp));
+                                        progressBar1.Increment(-poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].xp);
                                     }
                                     if (Lancuch[Lancuch.Count - 1].rodzaj == "item")
                                     {
@@ -414,6 +415,7 @@ namespace Princes_Escape
                     }
                 }
                 poziom.Lvl_losuj(stage);
+                Rysowanie_i_obliczanie("mapa");
 
             }
 
@@ -428,6 +430,7 @@ namespace Princes_Escape
                     }
                 }
                 poziom.wczytaj_z_pliku();
+                Rysowanie_i_obliczanie("mapa");
             }
 
             if (e.KeyCode == Keys.NumPad5)
@@ -442,10 +445,14 @@ namespace Princes_Escape
                 }
                 string mapy = File.ReadAllText(@"mapy.txt");
                 poziom.wczytaj_z_pliku(mapy);
+                Rysowanie_i_obliczanie("mapa");
             }
-
-            lkrokow++;
-            Rysowanie_i_obliczanie();
+            if (Princess.zmiana_poloenia == true)
+            {
+                lkrokow++;
+                Rysowanie_i_obliczanie();
+                Princess.zmiana_poloenia = false;
+            }
         }
 
         public void poziom_z_pliku()
