@@ -188,7 +188,29 @@ namespace Princes_Escape
                                     {
                                         poziom.get_item()[Lancuch[Lancuch.Count - 1].nr].AntyAkcja(Princess);
                                     }
+                                    if (Lancuch[Lancuch.Count - 1].Akcja == "miecz")
+                                    {
+                                        Princess.dajkase(0);//// MIECZ KASA
+                                        for (int w = 0; w < poziom.get_wrogowie().Count; w++)
+                                        {
+                                            if (Princess.pozycjapoprzednia_x + 1 == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
+                                                poziom.get_wrogowie()[w].wskrzes();
 
+                                            if (Princess.pozycjapoprzednia_x - 1 == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
+                                                poziom.get_wrogowie()[w].wskrzes();
+
+                                            if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y + 1 == poziom.get_wrogowie()[w].get_y())
+                                                poziom.get_wrogowie()[w].wskrzes();
+
+                                            if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y - 1 == poziom.get_wrogowie()[w].get_y())
+                                                poziom.get_wrogowie()[w].wskrzes();
+                                        }
+                                    }
+                                    else if (Lancuch[Lancuch.Count - 1].Akcja == "apteczka")
+                                    {
+                                        Princess.dajkase(2);
+                                        Princess.zran(1);
+                                    }
                                     Lancuch.RemoveRange(Lancuch.Count - 1, 1);
                                     if (Lancuch.Count != 0)
                                         PLANSZA.POLA[Lancuch[Lancuch.Count - 1].x, Lancuch[Lancuch.Count - 1].y].permission = true;
@@ -443,7 +465,7 @@ namespace Princes_Escape
             {
                 Princess.dajkase(-2);
                 Princess.lecz(1);
-                Rysowanie_i_obliczanie();
+                Rysowanie_i_obliczanie("apteczka");
             }
         }
 
@@ -470,6 +492,7 @@ namespace Princes_Escape
                     if (Princess.get_x() == poziom.get_wrogowie()[w].get_x() && Princess.get_y() - 1 == poziom.get_wrogowie()[w].get_y())
                         if (poziom.get_wrogowie()[w].get_istnieje() == true)
                             poziom.get_wrogowie()[w].zabij();
+                    Lancuch[Lancuch.Count - 1].Akcja = "miecz";
 
                 }
                 Rysowanie_i_obliczanie("miecz");
