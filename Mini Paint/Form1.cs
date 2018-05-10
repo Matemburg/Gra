@@ -21,7 +21,7 @@ namespace Princes_Escape
         private Plansza PLANSZA;
         private Image Pipi;
         private int lvl_Princess;
-        private int stage = 0;
+        private int stage = 10;
         private int lkrokow = 0;
         private bool innyPoziom = false;
         public string nick;
@@ -88,7 +88,7 @@ namespace Princes_Escape
                 g.DrawImage(poziom.get_przeszkody()[w].avatar, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumY - 32, 64, 64);
             }
 
-
+            
 
             /// WROGOWIE ////////////////////////////////////////////
 
@@ -132,6 +132,7 @@ namespace Princes_Escape
                             if (akcja == "") { 
                             lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, w, "przeciwnik");
                             lancuch_natysowany = true;
+                            
                         }
                     }
                 }
@@ -253,6 +254,12 @@ namespace Princes_Escape
                 else
                     g.DrawImage(poziom.get_wrogowie()[w].avatar_martwy, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
             }
+
+            for (int i = 0; i < Lancuch.Count-1; i++)
+            {
+                PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].permission = false;
+          }
+            
 
             for (int i = 0; i < Lancuch.Count; i++)
             {
