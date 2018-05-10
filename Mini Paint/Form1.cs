@@ -58,6 +58,7 @@ namespace Princes_Escape
             g.DrawImage(Princes_Escape.Properties.Resources.Ladder__Wood_, PLANSZA.POLA[0, 0].centrumX - 32, PLANSZA.POLA[0, 0].centrumY - 32, 64, 64);
 
             ////pipi
+            //HELLO ITS ME
 
             if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].permission == false)
             {
