@@ -256,7 +256,7 @@ namespace Princes_Escape
 
             for (int i = 0; i < Lancuch.Count; i++)
             {
-                g.DrawImage(Properties.Resources.stairs, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - 32, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - 32, 64, 64);
+                g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - 32, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - 32, 64, 64);
 
             }
             imgObrazek.Refresh();
