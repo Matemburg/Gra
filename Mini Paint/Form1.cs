@@ -27,12 +27,14 @@ namespace Princes_Escape
         private int stage = 0;
         private int lkrokow = 0;
         private bool innyPoziom = false;
+        public string nick;
         private List<Chain> Lancuch = new List<Chain>();
         Thread thread1 = new Thread(Muzyka.Play);
 
-        public Gra()
+        public Gra(string nazwa)
         {
             InitializeComponent();
+            nick = nazwa;
         }
         public Gra(bool edytor)
         {
@@ -116,6 +118,10 @@ namespace Princes_Escape
                         {
 
                             MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
+                            Form4.InicjalizacjaDanych();
+                            MessageBox.Show(nick);
+                            Users.DodajUsera(lkrokow, nick);
+
                             thread1.Abort();
                             System.Windows.Forms.Application.Exit();
                         }
