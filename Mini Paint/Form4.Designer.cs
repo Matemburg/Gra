@@ -31,7 +31,8 @@ namespace Princes_Escape
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.tablica = new System.Windows.Forms.ListView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -44,14 +45,15 @@ namespace Princes_Escape
             this.label1.TabIndex = 0;
             this.label1.Text = "HIGHSCORE BOARD";
             // 
-            // tablica
+            // dataGridView1
             // 
-            this.tablica.Location = new System.Drawing.Point(105, 117);
-            this.tablica.Name = "tablica";
-            this.tablica.Size = new System.Drawing.Size(610, 516);
-            this.tablica.TabIndex = 2;
-            this.tablica.UseCompatibleStateImageBehavior = false;
-            this.tablica.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(105, 126);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(610, 528);
+            this.dataGridView1.TabIndex = 1;
             // 
             // Form4
             // 
@@ -59,11 +61,12 @@ namespace Princes_Escape
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(800, 666);
-            this.Controls.Add(this.tablica);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Name = "Form4";
             this.Text = "Form4";
             this.Load += new System.EventHandler(this.Form4_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,6 +86,6 @@ namespace Princes_Escape
        
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView tablica;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

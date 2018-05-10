@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Text;
 using System.Windows.Forms;
 using System.Media;
 using NAudio.Wave;
@@ -119,7 +116,7 @@ namespace Princes_Escape
 
                             MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
                             Form4.InicjalizacjaDanych();
-                            MessageBox.Show(nick);
+                         //   MessageBox.Show(nick);
                             Users.DodajUsera(lkrokow, nick);
 
                             thread1.Abort();

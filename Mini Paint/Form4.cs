@@ -12,9 +12,6 @@ namespace Princes_Escape
     {
 
         SQLiteConnection Polaczenie = new SQLiteConnection(string.Format("Data Source={0}", Path.Combine(Application.StartupPath, "Highscore.db")));
-        SQLiteCommand komenda;
-        SQLiteDataReader czytnik;
-        string zapytanieSQL = "";
 
         public static List<User> ListaUserow = null;
 
@@ -49,18 +46,13 @@ namespace Princes_Escape
             {
                 if (Polaczenie.State == ConnectionState.Closed)
                     Polaczenie.Open();
-                zapytanieSQL = string.Format("select * from Highscore");
-                komenda = new SQLiteCommand(zapytanieSQL, Polaczenie);
-                czytnik = komenda.ExecuteReader();
-                if (czytnik.HasRows)
-                {
-                    tablica.Items.Clear();
-                    while (czytnik.Read())
-                    {
-                        tablica.Items.Add(string.Format("{0} - {1} \n", czytnik[1].ToString(), czytnik[2].ToString()));
-                    }
-                    czytnik.Close();
-                }
+         
+                DataTable dtbl = new DataTable();
+                SQLiteDataAdapter sqlDa = new SQLiteDataAdapter("select * from Highscore", Polaczenie);
+                sqlDa.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+
+            
             }
             catch (Exception ex)
             {
