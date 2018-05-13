@@ -10,7 +10,7 @@ namespace Princes_Escape
         private int y;
         public int centrumX;
         public int centrumY;
-        private int bok;
+        public int bok;
         public bool permission;
 
 

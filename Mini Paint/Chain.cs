@@ -11,6 +11,7 @@ namespace Princes_Escape
        public string rodzaj;
        public int nr;
         public string Akcja="";
+        public string kierunek="up";
 
         public Chain(int xx,int yy)
         {
@@ -21,6 +22,15 @@ namespace Princes_Escape
         }
         public Chain(int xx, int yy,string typ, int numer)
         {
+            x = xx;
+            y = yy;
+            rodzaj = typ;
+            nr = numer;
+        }
+
+        public Chain(string Kierunek,int xx, int yy, string typ, int numer)
+        {
+            kierunek = Kierunek;
             x = xx;
             y = yy;
             rodzaj = typ;

@@ -45,9 +45,13 @@ namespace Princes_Escape
 
         private void Rysowanie_i_obliczanie()
         {
-            Rysowanie_i_obliczanie("");
+            Rysowanie_i_obliczanie("","");
         }
         private void Rysowanie_i_obliczanie(string akcja)
+        {
+            Rysowanie_i_obliczanie(akcja, "");
+        }
+        private void Rysowanie_i_obliczanie(string akcja,string kierunek)
         {
             // thread1.GetApartmentState();
             // backgroundWorker1.InitializeLifetimeService();
@@ -130,7 +134,7 @@ namespace Princes_Escape
                         if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() || Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
                         {
                             if (akcja == "") { 
-                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, w, "przeciwnik");
+                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, w, "przeciwnik",kierunek);
                             lancuch_natysowany = true;
                             
                         }
@@ -152,7 +156,7 @@ namespace Princes_Escape
                     {
                         if (akcja == "")
                         {
-                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, a, "item");
+                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, a, "item",kierunek);
                             lancuch_natysowany = true;
                         }
                     }
@@ -175,7 +179,7 @@ namespace Princes_Escape
                         if (lancuch_natysowany == false)
                         {
                             if (Lancuch.Count == 0)
-                                lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0");
+                                lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0",kierunek);
                             else
                             {
                                 // int x = Lancuch[Lancuch.Count - 1].x;
@@ -227,7 +231,7 @@ namespace Princes_Escape
                                 }
                                 else
                                 {
-                                    lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0");
+                                    lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0",kierunek);
                                     PLANSZA.POLA[Lancuch[Lancuch.Count - 2].x, Lancuch[Lancuch.Count - 2].y].permission = false;
                                 }
                             }
@@ -265,8 +269,14 @@ namespace Princes_Escape
 
             for (int i = 0; i < Lancuch.Count; i++)
             {
-                g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - 32, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - 32, 64, 64);
-
+                if(Lancuch[i].kierunek=="left")
+                g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok , PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                if (Lancuch[i].kierunek == "right")
+                    g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x()- PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                if (Lancuch[i].kierunek == "down")
+                g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x()- (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                if (Lancuch[i].kierunek == "up")
+                    g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y()- PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
             }
             imgObrazek.Refresh();
         }
@@ -335,9 +345,10 @@ namespace Princes_Escape
             Rysowanie_i_obliczanie();
         }
 
-        private void lancuch_dodaj(int x, int y, int nr, string type)
+        private void lancuch_dodaj(int x, int y, int nr, string type, string kierunek)
         {
-            Lancuch.Add(new Chain(x, y, type, nr));
+            Lancuch.Add(new Chain(kierunek,x, y, type, nr));
+
         }
 
         private void Losuj_dzwiek_chodzenia()
@@ -463,7 +474,7 @@ namespace Princes_Escape
             if (Princess.zmiana_poloenia == true)
             {
                 lkrokow++;
-                Rysowanie_i_obliczanie();
+                Rysowanie_i_obliczanie("",Princess.kierunek);
                 Princess.zmiana_poloenia = false;
             }
         }

@@ -19,6 +19,7 @@ namespace Princes_Escape
         private int trudnosc;
         public int monety = 0;
         public bool zmiana_poloenia = false; // wykorzystywane przy lancuchu przy wychodzenniu za krawędź mapy
+        public string kierunek;
 
 
         public void addXP(int a)
@@ -120,6 +121,7 @@ namespace Princes_Escape
                 pozycja_y--;
                 zmiana_poloenia = true;
             }
+            kierunek = "up";
         }
 
         public void ruch_down()
@@ -132,7 +134,7 @@ namespace Princes_Escape
                 pozycja_y++;
                 zmiana_poloenia = true;
             }
-
+            kierunek = "down";
         }
 
         public void ruch_right()
@@ -144,6 +146,7 @@ namespace Princes_Escape
                 pozycjapoprzednia_y = pozycja_y;
                 pozycja_x--;
                 zmiana_poloenia = true;
+                kierunek = "right";
             }
 
         }
@@ -158,6 +161,7 @@ namespace Princes_Escape
                 pozycja_x++;
                 zmiana_poloenia = true;
             }
+            kierunek = "left";
 
         }
         public void back()
