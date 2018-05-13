@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Text;
 using System.Windows.Forms;
 using System.Media;
 using NAudio.Wave;
@@ -24,15 +21,17 @@ namespace Princes_Escape
         private Plansza PLANSZA;
         private Image Pipi;
         private int lvl_Princess;
-        private int stage = 0;
+        private int stage = 10;
         private int lkrokow = 0;
         private bool innyPoziom = false;
+        public string nick;
         private List<Chain> Lancuch = new List<Chain>();
         Thread thread1 = new Thread(Muzyka.Play);
 
-        public Gra()
+        public Gra(string nazwa)
         {
             InitializeComponent();
+            nick = nazwa;
         }
         public Gra(bool edytor)
         {
@@ -58,6 +57,7 @@ namespace Princes_Escape
             g.DrawImage(Princes_Escape.Properties.Resources.Ladder__Wood_, PLANSZA.POLA[0, 0].centrumX - 32, PLANSZA.POLA[0, 0].centrumY - 32, 64, 64);
 
             ////pipi
+            //HELLO ITS ME
 
             if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].permission == false)
             {
@@ -88,7 +88,7 @@ namespace Princes_Escape
                 g.DrawImage(poziom.get_przeszkody()[w].avatar, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumY - 32, 64, 64);
             }
 
-
+            
 
             /// WROGOWIE ////////////////////////////////////////////
 
@@ -115,6 +115,10 @@ namespace Princes_Escape
                         {
 
                             MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
+                            Form4.InicjalizacjaDanych();
+                         //   MessageBox.Show(nick);
+                            Users.DodajUsera(lkrokow, nick);
+
                             thread1.Abort();
                             System.Windows.Forms.Application.Exit();
                         }
@@ -128,6 +132,7 @@ namespace Princes_Escape
                             if (akcja == "") { 
                             lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, w, "przeciwnik");
                             lancuch_natysowany = true;
+                            
                         }
                     }
                 }
@@ -252,9 +257,15 @@ namespace Princes_Escape
                     g.DrawImage(poziom.get_wrogowie()[w].avatar_martwy, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
             }
 
+            for (int i = 0; i < Lancuch.Count-1; i++)
+            {
+                PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].permission = false;
+          }
+            
+
             for (int i = 0; i < Lancuch.Count; i++)
             {
-                g.DrawImage(Properties.Resources.stairs, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - 32, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - 32, 64, 64);
+                g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - 32, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - 32, 64, 64);
 
             }
             imgObrazek.Refresh();

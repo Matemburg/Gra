@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Media;
-using System.Threading;
 
 namespace Princes_Escape
 {
@@ -15,6 +11,7 @@ namespace Princes_Escape
         public SoundPlayer simpleSound;
         public SoundPlayer Klik= new SoundPlayer(Properties.Resources.Button_select);
         private Graphics l;
+        public string nick = "";
         public Form2()
         {
             InitializeComponent();
@@ -23,13 +20,15 @@ namespace Princes_Escape
             pictureBox1.Image = new Bitmap(300, 100);
             l = Graphics.FromImage(pictureBox1.Image);
             l.DrawImage(Princes_Escape.Properties.Resources.Princes, 100, 25);
+            new Form4();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             simpleSound.Stop();
+            nick = this.nickbox.Text;
             Klik.Play();
-            new Gra().Show();
+            new Gra(nick).Show();
             this.Hide();
         }
 
@@ -68,6 +67,16 @@ namespace Princes_Escape
         {
             simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Menu);
             simpleSound.PlayLooping();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new Form4().Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
