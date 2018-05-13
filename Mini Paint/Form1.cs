@@ -177,6 +177,7 @@ namespace Princes_Escape
                                 //  MessageBox.Show(x.ToString());
                                 if (Lancuch[Lancuch.Count - 1].x == Princess.get_x() && Lancuch[Lancuch.Count - 1].y == Princess.get_y())
                                 {
+                                    lkrokow--;
                                     // MessageBox.Show(Lancuch.Count.ToString());
                                     if (Lancuch[Lancuch.Count - 1].rodzaj == "przeciwnik")
                                     {
@@ -213,9 +214,10 @@ namespace Princes_Escape
                                         Princess.zran(1);
                                     }
                                     Lancuch.RemoveRange(Lancuch.Count - 1, 1);
+
                                     if (Lancuch.Count != 0)
                                         PLANSZA.POLA[Lancuch[Lancuch.Count - 1].x, Lancuch[Lancuch.Count - 1].y].permission = true;
-
+                                
 
                                 }
                                 else
