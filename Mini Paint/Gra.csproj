@@ -136,6 +136,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Przeciwnik.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Ustawienia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ustawienia.Designer.cs">
+      <DependentUpon>Ustawienia.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Form1.cs</DependentUpon>
@@ -159,6 +165,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Ustawienia.resx">
+      <DependentUpon>Ustawienia.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Mini Paint_TemporaryKey.pfx" />
     <None Include="packages.config" />

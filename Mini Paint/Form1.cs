@@ -24,9 +24,11 @@ namespace Princes_Escape
         private int stage = 10;
         private int lkrokow = 0;
         private bool innyPoziom = false;
-        public string nick;
+        public string nick="edytor";
         private List<Chain> Lancuch = new List<Chain>();
         Thread thread1 = new Thread(Muzyka.Play);
+
+
 
         public Gra(string nazwa)
         {

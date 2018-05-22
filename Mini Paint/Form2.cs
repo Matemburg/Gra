@@ -46,13 +46,15 @@ namespace Princes_Escape
         private void button2_Click(object sender, EventArgs e)
         {
             Klik.Play();
-            MessageBox.Show("Nie zaimplementowano");
+            new Ustawienia().Show();
+            this.Hide();
+           // MessageBox.Show("Nie zaimplementowano");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Klik.Play();
-            MessageBox.Show("Nie zaimplementowano");
+            MessageBox.Show("Matuesz Owczarczyk & Bałażej Kątny & Damian Karwowski");
         }
 
         private void button_edytor_Click(object sender, EventArgs e)
