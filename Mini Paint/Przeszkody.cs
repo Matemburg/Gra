@@ -11,7 +11,26 @@ namespace Princes_Escape
         public int pozycja_x;
         public int pozycja_y;
         public Image avatar;
+        private bool istnieje=true;
 
+        public bool get_istnieje()
+        {
+            return istnieje;
+        }
+
+
+        public void zabij()
+        {
+
+            istnieje = false;
+
+        }
+        public void wskrzes()
+        {
+
+            istnieje = true;
+
+        }
 
         public Przeszkody(string Type, int X, int Y)
         {

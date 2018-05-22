@@ -43,6 +43,124 @@ namespace Princes_Escape
 
         }
 
+        public void Lvl_losuj_V2(int stage)
+        {
+            Przedmioty.Clear();
+            Wrogowie.Clear();
+            Przeszkadajki.Clear();
+            Random random = new Random(DateTime.Now.Millisecond);
+            int Liczba_losowa;
+            int L_przeciwnik = 0;
+            int L_apteczka = 0;
+            int L_Lava = 0;
+            int L_monet = 0;
+
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    Liczba_losowa = random.Next(100);
+                    if (i == 0 && j == 0)
+                    { }
+                    else if (i == 8 && j == 8)
+                    { }
+                    else if (Liczba_losowa <= 10)
+                    {
+                        if (L_apteczka < (50-stage)+2)
+                        {
+                            Przedmioty.Add(new Item("apteczka", i, j));
+                            L_apteczka++;
+                        }
+                        else
+                            Liczba_losowa = random.Next(10, 100);
+                    }
+
+                    if (10<Liczba_losowa && 50> Liczba_losowa)
+                    {
+                        if (L_przeciwnik < i + j + (stage / (j + 1)))
+                        {
+                            if (j > 2 || i > 1)
+                            {
+                                if (j < 7 || i < 7)
+                                {
+                                    if (Liczba_losowa % 12 == 0)
+                                        Wrogowie.Add(new Przeciwnik(i, j, 2, 2, "wąż"));
+
+                                    else if (Liczba_losowa % 25 == 0)
+                                        Wrogowie.Add(new Przeciwnik(i, j, 3, 2, "Niebieski_wąż"));
+                                    else if (Liczba_losowa % 8 == 0)
+                                        Wrogowie.Add(new Przeciwnik(i, j, 1, 1, "pajak_fioletowy"));
+
+                                    else
+                                        Wrogowie.Add(new Przeciwnik(i, j));
+
+                                    L_przeciwnik++;
+                                }
+                            }
+                        }
+                        else
+                            Liczba_losowa = random.Next(50, 100);
+                    }
+
+                    if (50 < Liczba_losowa && 80 > Liczba_losowa)
+                    {
+                        if (j > 2 || i > 2)
+                        {
+                            if (j < 7 || i < 7)
+                            {
+                                if (L_Lava <  i + j)
+                                {
+                                    Random losowanie_przeszkody = new Random(DateTime.Now.Millisecond);
+                                    int los = losowanie_przeszkody.Next(0, 10);
+                                    if (los == 1)
+                                        Przeszkadajki.Add(new Przeszkody("lawa", i, j));
+                                    else if (los == 1)
+                                        Przeszkadajki.Add(new Przeszkody("stone1", i, j));
+                                    else if (los == 3)
+                                        Przeszkadajki.Add(new Przeszkody("stone2", i, j));
+                                    else if (los == 4)
+                                        Przeszkadajki.Add(new Przeszkody("coffin", i, j));
+                                    else if (los == 5)
+                                        Przeszkadajki.Add(new Przeszkody("column", i, j));
+                                    else if (los == 6)
+                                        Przeszkadajki.Add(new Przeszkody("ccolumn", i, j));
+                                    else if (los == 7)
+                                        Przeszkadajki.Add(new Przeszkody("totem", i, j));
+                                    else if (los == 8)
+                                        Przeszkadajki.Add(new Przeszkody("mstone", i, j));
+                                    else if (los == 9)
+                                        Przeszkadajki.Add(new Przeszkody("pillar", i, j));
+                                    else
+                                        Przeszkadajki.Add(new Przeszkody("stone3", i, j));
+                                    L_Lava++;
+                                }
+                            }
+                        }
+
+                        else
+                            Liczba_losowa = random.Next(80, 100);
+                    }
+                    else
+                    if (Liczba_losowa > 90)
+                        if (L_monet < 4)
+                        {
+                            if (j > 2 || i > 2)
+                            {
+                                if (j < 7 || i < 7)
+                                {
+                                    Przedmioty.Add(new Item("moneta", i, j));
+                                    L_monet++;
+                                }
+                            }
+                        }
+                }
+
+            }
+        }
+
+
+
+
         public void Lvl_losuj(int stage)
         {
             Przedmioty.Clear();
