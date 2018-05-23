@@ -32,7 +32,7 @@ namespace Princes_Escape
 
         public Gra(string nazwa)
         {
-            InitializeComponent();
+            InitializeComponent();                                     
             nick = nazwa;
         }
         public Gra(bool edytor)
@@ -84,6 +84,7 @@ namespace Princes_Escape
                 Princess.restart();
                 Lancuch.Clear();
                 poziom.Lvl_losuj_V2(stage);
+   
 
             }
 
@@ -95,8 +96,6 @@ namespace Princes_Escape
             {
                 if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()])
                 {
-
-
                     if (poziom.get_wrogowie()[w].get_istnieje() == true)
                     {
                         Princess.zran(poziom.get_wrogowie()[w].atak);
@@ -114,9 +113,9 @@ namespace Princes_Escape
                         {
 
                             MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
-                            Form4.InicjalizacjaDanych();
+                          //  Form4.InicjalizacjaDanych();
                          //   MessageBox.Show(nick);
-                            Users.DodajUsera(lkrokow, nick);
+                           // Users.DodajUsera(lkrokow, nick);
 
                             thread1.Abort();
                             System.Windows.Forms.Application.Exit();
@@ -136,6 +135,8 @@ namespace Princes_Escape
                     }
                 }
                 }
+                label5.Text = string.Format("{0} / {1}", Princess.get_xp(), Princess.get_trudnosc());
+
             }
 
 
@@ -168,6 +169,7 @@ namespace Princes_Escape
             g.DrawImage(Properties.Resources.Trapdoor, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumX - 32, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumY - 32, 64, 64);
             if (akcja == "")
             {
+
                 if (back == false)
                 {
                     if (Princess.pozycjapoprzednia_x != Princess.get_x() || Princess.pozycjapoprzednia_y != Princess.get_y())
@@ -307,9 +309,9 @@ namespace Princes_Escape
 
         private void Gra_Load(object sender, EventArgs e)
         {
-            //SoundPlayer Muzyka;
-            // Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
-            // Muzyka.PlayLooping();
+            SoundPlayer Muzyka;
+             Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
+             Muzyka.PlayLooping();
 
 
             thread1.Start();
@@ -317,30 +319,41 @@ namespace Princes_Escape
             pictureBox2.Parent = imgObrazek;
             pictureBox3.Parent = imgObrazek;
             label2.Parent = imgObrazek;
-            label3.Parent = imgObrazek;
             label1.Parent = imgObrazek;
-            pictureBox1.Location = new Point(Width - 3 * 64 - 3 * 5, Height - 74);
-            pictureBox2.Location = new Point(Width - 2 * 64 - 2 * 5, Height - 74);
-            pictureBox3.Location = new Point(Width - 1 * 64 - 1 * 5, Height - 74);
+            label3.Parent = imgObrazek;
+            pictureBox1.Location = new Point(Width - 3 * 64 - 3 * 5, Height - 110);
+            pictureBox2.Location = new Point(Width - 2 * 64 - 2 * 5, Height - 110);
+            pictureBox3.Location = new Point(Width - 1 * 64 - 1 * 5, Height - 110);
+            pictureBox4.Location = new Point(Width - 22 * 64 - 1 * 5, Height -(Height-20));
             pictureBox1.Image = new Bitmap(64, 64);
             pictureBox2.Image = new Bitmap(64, 64);
             pictureBox3.Image = new Bitmap(64, 64);
+            pictureBox4.Image = new Bitmap(64, 64);
             Graphics p1 = Graphics.FromImage(pictureBox1.Image);
             Graphics p2 = Graphics.FromImage(pictureBox2.Image);
             Graphics p3 = Graphics.FromImage(pictureBox3.Image);
+            Graphics p4 = Graphics.FromImage(pictureBox4.Image);
             pictureBox1.Parent = imgObrazek;
+            pictureBox4.Parent = imgObrazek;
             p1.Clear(Color.Transparent);
             p1.DrawImage(Properties.Resources.MEDIC, 0, 0, 64, 64);
             p2.Clear(Color.Transparent);
             p2.DrawImage(Properties.Resources.katana, 0, 0, 64, 64);
             p3.Clear(Color.Transparent);
             p3.DrawImage(Properties.Resources.Diamond_Pickaxe_icon, 0, 0, 64, 64);
+            p4.Clear(Color.Transparent);
+            p4.DrawImage(Properties.Resources.moneta_1, 0, 0, 64, 64);
             progressBar1.Location = new Point(Width / 30, 4 * Height / 5);
-            progressBar1.Size = new Size((Width * 10) / 65, 24);
-            label2.Location = new Point(Width / 30, 4 * Height / 7);
+            progressBar1.Size = new Size((Width * 10) / 65, 50);
+            label2.Location = new Point(Width / 29, 4 * Height / 7);
+            label1.Location = new Point(Width -280 , Height -50);
             label4.Location = new Point(5 * Width / 6, 4 * Height / 7);
+            label3.Location = new Point(Width - 21 * 64 - 1 * 5, Height - (Height - 30));
+            label5.Location = new Point(Width / 13, 4 * Height / 5+60);         
             label2.Parent = imgObrazek;
+            label1.Parent = imgObrazek;
             label4.Parent = imgObrazek;
+            label5.Parent = imgObrazek;
 
             if (innyPoziom == false)
             {
@@ -364,15 +377,17 @@ namespace Princes_Escape
 
             Pipi = Princes_Escape.Properties.Resources.Princes;
             label2.BackColor = Color.Transparent;
+            label1.BackColor = Color.Transparent;
             label4.BackColor = Color.Transparent;
             // lancuch_dodaj(0, 0, 0, "0");
             Rysowanie_i_obliczanie();
+            
         }
 
         private void lancuch_dodaj(int x, int y, int nr, string type, string kierunek)
         {
             Lancuch.Add(new Chain(kierunek,x, y, type, nr));
-
+            
         }
 
         private void Losuj_dzwiek_chodzenia()
@@ -396,6 +411,7 @@ namespace Princes_Escape
         }
         private void Gra_KeyDown(object sender, KeyEventArgs e)
         {
+            //label5.Text = string.Format("{0} / {1}", Princess.get_xp(), Princess.get_trudnosc());
             Losuj_dzwiek_chodzenia();
             if (e.KeyCode == Keys.Up)
             {
@@ -504,7 +520,10 @@ namespace Princes_Escape
                 lkrokow++;
                 Rysowanie_i_obliczanie("",Princess.kierunek);
                 Princess.zmiana_poloenia = false;
+                
             }
+            label5.Text = string.Format("{0} / {1}", Princess.get_xp(), Princess.get_trudnosc());
+
         }
 
         public void poziom_z_pliku()

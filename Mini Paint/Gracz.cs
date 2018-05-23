@@ -16,7 +16,7 @@ namespace Princes_Escape
         private int hp = 3;
         private int xp = 0;
         private int lvl = 1;
-        private int trudnosc;
+        private int trudnosc=5;
         public int monety = 0;
         public bool zmiana_poloenia = false; // wykorzystywane przy lancuchu przy wychodzenniu za krawędź mapy
         public string kierunek;
@@ -43,6 +43,7 @@ namespace Princes_Escape
                 hp = maxhp;
             }
         }
+       
         
         public void dajkase(int i)
         {
@@ -110,7 +111,11 @@ namespace Princes_Escape
         {
             return trudnosc;
         }
-    
+        public int get_xp()
+        {
+            return xp;
+        }
+
         public void ruch_up()
         {
 

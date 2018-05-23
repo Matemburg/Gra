@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
+using System.Threading;
 
 namespace Princes_Escape
 {
@@ -20,7 +21,11 @@ namespace Princes_Escape
             pictureBox1.Image = new Bitmap(300, 100);
             l = Graphics.FromImage(pictureBox1.Image);
             l.DrawImage(Princes_Escape.Properties.Resources.Princes, 100, 25);
-            new Form4();
+            
+
+            // new Form4();
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,7 +39,8 @@ namespace Princes_Escape
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            backgroundWorker1.RunWorkerAsync();
+            backgroundWorker1.RunWorkerAsync(); 
+           
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -48,7 +54,6 @@ namespace Princes_Escape
             Klik.Play();
             new Ustawienia().Show();
             this.Hide();
-           // MessageBox.Show("Nie zaimplementowano");
         }
 
         private void button3_Click(object sender, EventArgs e)
