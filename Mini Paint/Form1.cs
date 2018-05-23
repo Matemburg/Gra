@@ -24,7 +24,7 @@ namespace Princes_Escape
         private int stage = 10;
         private int lkrokow = 0;
         private bool innyPoziom = false;
-        public string nick="edytor";
+        public string nick = "edytor";
         private List<Chain> Lancuch = new List<Chain>();
         Thread thread1 = new Thread(Muzyka.Play);
 
@@ -32,7 +32,7 @@ namespace Princes_Escape
 
         public Gra(string nazwa)
         {
-            InitializeComponent();                                     
+            InitializeComponent();
             nick = nazwa;
         }
         public Gra(bool edytor)
@@ -47,13 +47,13 @@ namespace Princes_Escape
 
         private void Rysowanie_i_obliczanie()
         {
-            Rysowanie_i_obliczanie("","");
+            Rysowanie_i_obliczanie("", "");
         }
         private void Rysowanie_i_obliczanie(string akcja)
         {
             Rysowanie_i_obliczanie(akcja, "");
         }
-        private void Rysowanie_i_obliczanie(string akcja,string kierunek)
+        private void Rysowanie_i_obliczanie(string akcja, string kierunek)
         {
             // thread1.GetApartmentState();
             // backgroundWorker1.InitializeLifetimeService();
@@ -84,7 +84,7 @@ namespace Princes_Escape
                 Princess.restart();
                 Lancuch.Clear();
                 poziom.Lvl_losuj_V2(stage);
-   
+
 
             }
 
@@ -113,9 +113,9 @@ namespace Princes_Escape
                         {
 
                             MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
-                          //  Form4.InicjalizacjaDanych();
-                         //   MessageBox.Show(nick);
-                           // Users.DodajUsera(lkrokow, nick);
+                            //   Form4.InicjalizacjaDanych();
+                            //MessageBox.Show(nick);
+                            Users.DodajUsera(lkrokow, nick);
 
                             thread1.Abort();
                             System.Windows.Forms.Application.Exit();
@@ -127,13 +127,14 @@ namespace Princes_Escape
                         poziom.get_wrogowie()[w].zabij();
                         if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() || Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
                         {
-                            if (akcja == "") { 
-                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, w, "przeciwnik",kierunek);
-                            lancuch_natysowany = true;
-                            
+                            if (akcja == "")
+                            {
+                                lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, w, "przeciwnik", kierunek);
+                                lancuch_natysowany = true;
+
+                            }
                         }
                     }
-                }
                 }
                 label5.Text = string.Format("{0} / {1}", Princess.get_xp(), Princess.get_trudnosc());
 
@@ -152,7 +153,7 @@ namespace Princes_Escape
                     {
                         if (akcja == "")
                         {
-                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, a, "item",kierunek);
+                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, a, "item", kierunek);
                             lancuch_natysowany = true;
                         }
                     }
@@ -162,7 +163,7 @@ namespace Princes_Escape
             for (int i = 0; i < poziom.get_przeszkody().Count; i++)
             {
                 if (poziom.get_przeszkody()[i].get_istnieje() == true)
-                PLANSZA.POLA[poziom.get_przeszkody()[i].get_x(), poziom.get_przeszkody()[i].get_y()].permission = false;
+                    PLANSZA.POLA[poziom.get_przeszkody()[i].get_x(), poziom.get_przeszkody()[i].get_y()].permission = false;
             }
             g.DrawImage(Pipi, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumX - 32, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumY - 32, 64, 64);
 
@@ -177,7 +178,7 @@ namespace Princes_Escape
                         if (lancuch_natysowany == false)
                         {
                             if (Lancuch.Count == 0)
-                                lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0",kierunek);
+                                lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0", kierunek);
                             else
                             {
                                 // int x = Lancuch[Lancuch.Count - 1].x;
@@ -215,7 +216,7 @@ namespace Princes_Escape
                                                 poziom.get_wrogowie()[w].wskrzes();
                                         }
                                     }
-                                    if (Lancuch[Lancuch.Count-1].Akcja == "kilof")
+                                    if (Lancuch[Lancuch.Count - 1].Akcja == "kilof")
                                     {
                                         Princess.dajkase(0);//// Kilof KASA
                                         for (int w = 0; w < poziom.get_przeszkody().Count; w++)
@@ -243,12 +244,12 @@ namespace Princes_Escape
 
                                     if (Lancuch.Count != 0)
                                         PLANSZA.POLA[Lancuch[Lancuch.Count - 1].x, Lancuch[Lancuch.Count - 1].y].permission = true;
-                                
+
 
                                 }
                                 else
                                 {
-                                    lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0",kierunek);
+                                    lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0", kierunek);
                                     PLANSZA.POLA[Lancuch[Lancuch.Count - 2].x, Lancuch[Lancuch.Count - 2].y].permission = false;
                                 }
                             }
@@ -278,10 +279,10 @@ namespace Princes_Escape
                     g.DrawImage(poziom.get_wrogowie()[w].avatar_martwy, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
             }
 
-            for (int i = 0; i < Lancuch.Count-1; i++)
+            for (int i = 0; i < Lancuch.Count - 1; i++)
             {
                 PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].permission = false;
-          }
+            }
 
             ///// Przeszkody
 
@@ -295,14 +296,14 @@ namespace Princes_Escape
 
             for (int i = 0; i < Lancuch.Count; i++)
             {
-                if(Lancuch[i].kierunek=="left")
-                g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok , PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                if (Lancuch[i].kierunek == "left")
+                    g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
                 if (Lancuch[i].kierunek == "right")
-                    g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x()- PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                    g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
                 if (Lancuch[i].kierunek == "down")
-                g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x()- (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                    g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
                 if (Lancuch[i].kierunek == "up")
-                    g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y()- PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                    g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
             }
             imgObrazek.Refresh();
         }
@@ -310,8 +311,8 @@ namespace Princes_Escape
         private void Gra_Load(object sender, EventArgs e)
         {
             SoundPlayer Muzyka;
-             Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
-             Muzyka.PlayLooping();
+            Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
+            Muzyka.PlayLooping();
 
 
             thread1.Start();
@@ -324,7 +325,7 @@ namespace Princes_Escape
             pictureBox1.Location = new Point(Width - 3 * 64 - 3 * 5, Height - 110);
             pictureBox2.Location = new Point(Width - 2 * 64 - 2 * 5, Height - 110);
             pictureBox3.Location = new Point(Width - 1 * 64 - 1 * 5, Height - 110);
-            pictureBox4.Location = new Point(Width - 22 * 64 - 1 * 5, Height -(Height-20));
+            pictureBox4.Location = new Point(Width - 22 * 64 - 1 * 5, Height - (Height - 20));
             pictureBox1.Image = new Bitmap(64, 64);
             pictureBox2.Image = new Bitmap(64, 64);
             pictureBox3.Image = new Bitmap(64, 64);
@@ -346,10 +347,10 @@ namespace Princes_Escape
             progressBar1.Location = new Point(Width / 30, 4 * Height / 5);
             progressBar1.Size = new Size((Width * 10) / 65, 50);
             label2.Location = new Point(Width / 29, 4 * Height / 7);
-            label1.Location = new Point(Width -280 , Height -50);
+            label1.Location = new Point(Width - 280, Height - 50);
             label4.Location = new Point(5 * Width / 6, 4 * Height / 7);
             label3.Location = new Point(Width - 21 * 64 - 1 * 5, Height - (Height - 30));
-            label5.Location = new Point(Width / 13, 4 * Height / 5+60);         
+            label5.Location = new Point(Width / 13, 4 * Height / 5 + 60);
             label2.Parent = imgObrazek;
             label1.Parent = imgObrazek;
             label4.Parent = imgObrazek;
@@ -381,13 +382,13 @@ namespace Princes_Escape
             label4.BackColor = Color.Transparent;
             // lancuch_dodaj(0, 0, 0, "0");
             Rysowanie_i_obliczanie();
-            
+
         }
 
         private void lancuch_dodaj(int x, int y, int nr, string type, string kierunek)
         {
-            Lancuch.Add(new Chain(kierunek,x, y, type, nr));
-            
+            Lancuch.Add(new Chain(kierunek, x, y, type, nr));
+
         }
 
         private void Losuj_dzwiek_chodzenia()
@@ -470,7 +471,7 @@ namespace Princes_Escape
                 stage++;
             }
 
-                if (e.KeyCode == Keys.Subtract)
+            if (e.KeyCode == Keys.Subtract)
             {
                 Princess.restart();
                 Lancuch.Clear();
@@ -518,9 +519,9 @@ namespace Princes_Escape
             if (Princess.zmiana_poloenia == true)
             {
                 lkrokow++;
-                Rysowanie_i_obliczanie("",Princess.kierunek);
+                Rysowanie_i_obliczanie("", Princess.kierunek);
                 Princess.zmiana_poloenia = false;
-                
+
             }
             label5.Text = string.Format("{0} / {1}", Princess.get_xp(), Princess.get_trudnosc());
 
