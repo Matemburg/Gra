@@ -25,8 +25,6 @@ namespace Princes_Escape
                 ListViewItem item = new ListViewItem(licznik.ToString());
                 item.SubItems.Add(u.Nazwa);
                 item.SubItems.Add(u.Wynik.ToString());
-
-
                 licznik++;
             }
         }
@@ -48,7 +46,7 @@ namespace Princes_Escape
                     Polaczenie.Open();
          
                 DataTable dtbl = new DataTable();
-                SQLiteDataAdapter sqlDa = new SQLiteDataAdapter("select * from Highscore", Polaczenie);
+                SQLiteDataAdapter sqlDa = new SQLiteDataAdapter("select Nazwa, Wynik from Highscore order by Wynik desc", Polaczenie);
                 sqlDa.Fill(dtbl);
                 dataGridView1.DataSource = dtbl;
 
