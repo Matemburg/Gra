@@ -61,30 +61,58 @@ namespace Princes_Escape
     public class Users : Glowna
     {
         #region wlasciwosci
-        public static bool DodajUsera(int wynik, string nazwa)
+        public static int OstatnieId
+        {
+            get
+            {
+                int id = 0;
+                try
+                {
+                    if (Polaczenie.State == ConnectionState.Closed)
+                        Polaczenie.Open();
+
+
+                    zapytanieSQL = string.Format("select Id from Highscore order by Id desc limit 1");
+                    Komenda = new SQLiteCommand(zapytanieSQL, Polaczenie);
+                    id = Convert.ToInt32(Komenda.ExecuteScalar());
+                    id++;
+
+                }
+                catch (Exception e)
+                {
+                    string blad = string.Format("Problem :\n{0}", e.Message);
+                    MessageBox.Show(blad, "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    Polaczenie.Close();
+                }
+                return id;
+            }
+        }
+        public static bool DodajUsera(int wynik, string nazwa, bool powiadomienie = true)
         {
             bool status = false;
-            
-            
+
             try
             {
                 if (Polaczenie.State == ConnectionState.Closed)
-                {
                     Polaczenie.Open();
 
-                    zapytanieSQL = string.Format("create table if not exists Highscore(Id integer primary key autoincrement,Wynik integer,Nazwa varchar(30)");
-                    Komenda = new SQLiteCommand(zapytanieSQL, Polaczenie);
-           
 
-                    zapytanieSQL = string.Format("insert into Highscore(Wynik,Nazwa) values({0},'{1}')", wynik, nazwa);
-                    Komenda = new SQLiteCommand(zapytanieSQL, Polaczenie);
-                    Komenda.ExecuteNonQuery();
-                }
-                else
-                {
-                    MessageBox.Show("NIE Polaczono z baza danych.");
-                }
-                Polaczenie.Close();
+                zapytanieSQL = string.Format("insert into Highscore(Wynik,Nazwa) values({0},'{1}')", wynik, nazwa);
+
+                Komenda.CommandText = zapytanieSQL;
+
+
+                Komenda.ExecuteNonQuery();
+
+                /*  if (powiadomienie)
+                  {
+                      MessageBox.Show("User dodany.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  }
+                 */
+
             }
             catch (Exception e)
             {

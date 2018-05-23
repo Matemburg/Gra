@@ -113,9 +113,9 @@ namespace Princes_Escape
                         {
 
                             MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
-                         //   Form4.InicjalizacjaDanych();
-                            //MessageBox.Show(nick);
-                            Users.DodajUsera(lkrokow, nick);
+                          //  Form4.InicjalizacjaDanych();
+                         //   MessageBox.Show(nick);
+                           // Users.DodajUsera(lkrokow, nick);
 
                             thread1.Abort();
                             System.Windows.Forms.Application.Exit();
