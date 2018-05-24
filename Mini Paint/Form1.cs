@@ -21,7 +21,7 @@ namespace Princes_Escape
         private Plansza PLANSZA;
         private Image Pipi;
         private int lvl_Princess;
-        private int stage = 10;
+        private int stage = 0;
         private int lkrokow = 0;
         private bool innyPoziom = false;
         public string nick = "edytor";
@@ -346,15 +346,17 @@ namespace Princes_Escape
             p4.DrawImage(Properties.Resources.moneta_1, 0, 0, 64, 64);
             progressBar1.Location = new Point(Width / 30, 4 * Height / 5);
             progressBar1.Size = new Size((Width * 10) / 65, 50);
-            label2.Location = new Point(Width / 29, 4 * Height / 7);
-            label1.Location = new Point(Width - 280, Height - 50);
-            label4.Location = new Point(5 * Width / 6, 4 * Height / 7);
+            label2.Location = new Point(Width / 29+35, 4 * Height / 7);
+            label1.Location = new Point(Width - 330, Height - 50);
+            label4.Location = new Point(Width -250, 4 * Height / 7);
             label3.Location = new Point(Width - 21 * 64 - 1 * 5, Height - (Height - 30));
             label5.Location = new Point(Width / 13, 4 * Height / 5 + 60);
+            label6.Location = new Point(Width - 330, Height - 150);
             label2.Parent = imgObrazek;
             label1.Parent = imgObrazek;
             label4.Parent = imgObrazek;
             label5.Parent = imgObrazek;
+            label6.Parent = imgObrazek;
 
             if (innyPoziom == false)
             {
@@ -409,6 +411,75 @@ namespace Princes_Escape
             else if (liczba_losowa == 6)
                 Krok = new SoundPlayer(Princes_Escape.Properties.Resources.Krok_6);
 
+        }
+        private void atakmieczem()
+        {
+            int koszt = 3;
+            if (Princess.monety >= koszt)
+            {
+                Princess.dajkase(-koszt);
+                for (int w = 0; w < poziom.get_wrogowie().Count; w++)
+                {
+                    if (Princess.get_x() + 1 == poziom.get_wrogowie()[w].get_x() && Princess.get_y() == poziom.get_wrogowie()[w].get_y())
+                        if (poziom.get_wrogowie()[w].get_istnieje() == true)
+                            poziom.get_wrogowie()[w].zabij();
+
+                    if (Princess.get_x() - 1 == poziom.get_wrogowie()[w].get_x() && Princess.get_y() == poziom.get_wrogowie()[w].get_y())
+                        if (poziom.get_wrogowie()[w].get_istnieje() == true)
+                            poziom.get_wrogowie()[w].zabij();
+
+                    if (Princess.get_x() == poziom.get_wrogowie()[w].get_x() && Princess.get_y() + 1 == poziom.get_wrogowie()[w].get_y())
+                        if (poziom.get_wrogowie()[w].get_istnieje() == true)
+                            poziom.get_wrogowie()[w].zabij();
+
+                    if (Princess.get_x() == poziom.get_wrogowie()[w].get_x() && Princess.get_y() - 1 == poziom.get_wrogowie()[w].get_y())
+                        if (poziom.get_wrogowie()[w].get_istnieje() == true)
+                            poziom.get_wrogowie()[w].zabij();
+                    Lancuch[Lancuch.Count - 1].Akcja = "miecz";
+
+                }
+                Rysowanie_i_obliczanie("miecz");
+            }
+        }
+
+        private void uderzeniekilofem()
+        {
+            int koszt = 3;
+            if (Princess.monety >= koszt)
+            {
+                Princess.dajkase(-koszt);
+                for (int w = 0; w < poziom.get_przeszkody().Count; w++)
+                {
+                    if (Princess.get_x() + 1 == poziom.get_przeszkody()[w].get_x() && Princess.get_y() == poziom.get_przeszkody()[w].get_y())
+                        if (poziom.get_przeszkody()[w].get_istnieje() == true)
+                            poziom.get_przeszkody()[w].zabij();
+
+                    if (Princess.get_x() - 1 == poziom.get_przeszkody()[w].get_x() && Princess.get_y() == poziom.get_przeszkody()[w].get_y())
+                        if (poziom.get_przeszkody()[w].get_istnieje() == true)
+                            poziom.get_przeszkody()[w].zabij();
+
+                    if (Princess.get_x() == poziom.get_przeszkody()[w].get_x() && Princess.get_y() + 1 == poziom.get_przeszkody()[w].get_y())
+                        if (poziom.get_przeszkody()[w].get_istnieje() == true)
+                            poziom.get_przeszkody()[w].zabij();
+
+                    if (Princess.get_x() == poziom.get_przeszkody()[w].get_x() && Princess.get_y() - 1 == poziom.get_przeszkody()[w].get_y())
+                        if (poziom.get_przeszkody()[w].get_istnieje() == true)
+                            poziom.get_przeszkody()[w].zabij();
+                    PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].permission = true;
+                    Lancuch[Lancuch.Count - 1].Akcja = "kilof";
+
+                }
+                Rysowanie_i_obliczanie("kilof");
+            }
+        }
+        private void leczenieapteczkaz()
+        {
+            if (Princess.monety >= 2)
+            {
+                Princess.dajkase(-2);
+                Princess.lecz(1);
+                Rysowanie_i_obliczanie("apteczka");
+            }
         }
         private void Gra_KeyDown(object sender, KeyEventArgs e)
         {
@@ -470,7 +541,22 @@ namespace Princes_Escape
             {
                 stage++;
             }
-
+            else
+            if (e.KeyCode == Keys.Z)
+            {
+                leczenieapteczkaz();
+            }
+            else
+            if (e.KeyCode == Keys.X)
+            {
+                atakmieczem();
+            }
+            else
+            if (e.KeyCode == Keys.C)
+            {
+                uderzeniekilofem();
+            }
+            else
             if (e.KeyCode == Keys.Subtract)
             {
                 Princess.restart();
@@ -487,7 +573,7 @@ namespace Princes_Escape
                 Rysowanie_i_obliczanie("mapa");
 
             }
-
+            else
             if (e.KeyCode == Keys.NumPad0)
             {
                 Princess.restart(0, 0);
@@ -501,7 +587,7 @@ namespace Princes_Escape
                 poziom.wczytaj_z_pliku();
                 Rysowanie_i_obliczanie("mapa");
             }
-
+            else 
             if (e.KeyCode == Keys.NumPad5)
             {
                 Princess.restart(0, 0);
@@ -540,73 +626,17 @@ namespace Princes_Escape
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (Princess.monety >= 2)
-            {
-                Princess.dajkase(-2);
-                Princess.lecz(1);
-                Rysowanie_i_obliczanie("apteczka");
-            }
+            leczenieapteczkaz();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            int koszt = 0;
-            if (Princess.monety >= koszt)
-            {
-                Princess.dajkase(-koszt);
-                for (int w = 0; w < poziom.get_wrogowie().Count; w++)
-                {
-                    if (Princess.get_x() + 1 == poziom.get_wrogowie()[w].get_x() && Princess.get_y() == poziom.get_wrogowie()[w].get_y())
-                        if (poziom.get_wrogowie()[w].get_istnieje() == true)
-                            poziom.get_wrogowie()[w].zabij();
-
-                    if (Princess.get_x() - 1 == poziom.get_wrogowie()[w].get_x() && Princess.get_y() == poziom.get_wrogowie()[w].get_y())
-                        if (poziom.get_wrogowie()[w].get_istnieje() == true)
-                            poziom.get_wrogowie()[w].zabij();
-
-                    if (Princess.get_x() == poziom.get_wrogowie()[w].get_x() && Princess.get_y() + 1 == poziom.get_wrogowie()[w].get_y())
-                        if (poziom.get_wrogowie()[w].get_istnieje() == true)
-                            poziom.get_wrogowie()[w].zabij();
-
-                    if (Princess.get_x() == poziom.get_wrogowie()[w].get_x() && Princess.get_y() - 1 == poziom.get_wrogowie()[w].get_y())
-                        if (poziom.get_wrogowie()[w].get_istnieje() == true)
-                            poziom.get_wrogowie()[w].zabij();
-                    Lancuch[Lancuch.Count - 1].Akcja = "miecz";
-
-                }
-                Rysowanie_i_obliczanie("miecz");
-            }
+            atakmieczem();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            int koszt = 0;
-            if (Princess.monety >= koszt)
-            {
-                Princess.dajkase(-koszt);
-                for (int w = 0; w < poziom.get_przeszkody().Count; w++)
-                {
-                    if (Princess.get_x() + 1 == poziom.get_przeszkody()[w].get_x() && Princess.get_y() == poziom.get_przeszkody()[w].get_y())
-                        if (poziom.get_przeszkody()[w].get_istnieje() == true)
-                            poziom.get_przeszkody()[w].zabij();
-
-                    if (Princess.get_x() - 1 == poziom.get_przeszkody()[w].get_x() && Princess.get_y() == poziom.get_przeszkody()[w].get_y())
-                        if (poziom.get_przeszkody()[w].get_istnieje() == true)
-                            poziom.get_przeszkody()[w].zabij();
-
-                    if (Princess.get_x() == poziom.get_przeszkody()[w].get_x() && Princess.get_y() + 1 == poziom.get_przeszkody()[w].get_y())
-                        if (poziom.get_przeszkody()[w].get_istnieje() == true)
-                            poziom.get_przeszkody()[w].zabij();
-
-                    if (Princess.get_x() == poziom.get_przeszkody()[w].get_x() && Princess.get_y() - 1 == poziom.get_przeszkody()[w].get_y())
-                        if (poziom.get_przeszkody()[w].get_istnieje() == true)
-                            poziom.get_przeszkody()[w].zabij();
-                    PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].permission = true;
-                    Lancuch[Lancuch.Count - 1].Akcja = "kilof";
-
-                }
-                Rysowanie_i_obliczanie("kilof");
-            }
+            uderzeniekilofem();
         }
     }
 }

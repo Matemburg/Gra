@@ -89,7 +89,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(16, 30);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(288, 134);
+            this.pictureBox1.Size = new System.Drawing.Size(388, 134);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -305,45 +305,45 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(507, 213);
+            this.label5.Location = new System.Drawing.Point(507, 198);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(288, 40);
+            this.label5.Size = new System.Drawing.Size(322, 55);
             this.label5.TabIndex = 21;
             this.label5.Text = "Uważaj aby stan twojego zdrowia nie spadł do zera!";
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(507, 271);
+            this.label6.Location = new System.Drawing.Point(507, 269);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(332, 52);
+            this.label6.Size = new System.Drawing.Size(434, 54);
             this.label6.TabIndex = 22;
             this.label6.Text = "Pająk podstawowy atakuje za 1 pkt życia i daje 1 pkt doświadczenia";
             // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(507, 339);
+            this.label7.Location = new System.Drawing.Point(506, 348);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(322, 41);
+            this.label7.Size = new System.Drawing.Size(408, 54);
             this.label7.TabIndex = 23;
-            this.label7.Text = "Rzadszy typ pająka dający 2 pkt doświadczenia";
+            this.label7.Text = "Rzadszy typ pająka dający 2 pkt doświadczenia i zabierający 1 pkt życia";
             // 
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(507, 410);
+            this.label8.Location = new System.Drawing.Point(507, 405);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(310, 43);
+            this.label8.Size = new System.Drawing.Size(357, 54);
             this.label8.TabIndex = 24;
             this.label8.Text = "Wąż ogrodowy zabiera 2 pkt i daje 2 pkt doświadczenia";
             // 
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(507, 475);
+            this.label9.Location = new System.Drawing.Point(507, 467);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(305, 58);
+            this.label9.Size = new System.Drawing.Size(357, 66);
             this.label9.TabIndex = 25;
             this.label9.Text = "Boa dusiciel, niezwykle rzadki dający 3pkt doświadczenia oraz zabierający 3 pkt z" +
     "drowia";
@@ -351,9 +351,9 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(507, 545);
+            this.label10.Location = new System.Drawing.Point(507, 539);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(322, 80);
+            this.label10.Size = new System.Drawing.Size(379, 86);
             this.label10.TabIndex = 26;
             this.label10.Text = "Elementy planszy na które nie można wejść, ale które mogą zostać zniszczone za po" +
     "mocą kilofa";
@@ -363,7 +363,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(853, 636);
+            this.ClientSize = new System.Drawing.Size(953, 636);
             this.ControlBox = false;
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);

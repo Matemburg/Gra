@@ -30,6 +30,7 @@ namespace Princes_Escape
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -55,6 +56,7 @@ namespace Princes_Escape
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox4);
@@ -73,6 +75,18 @@ namespace Princes_Escape
             this.panel1.Size = new System.Drawing.Size(1387, 777);
             this.panel1.TabIndex = 0;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Consolas", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(867, 266);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(398, 45);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "U¿ycie:  Z   X   C";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -81,21 +95,21 @@ namespace Princes_Escape
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(89, 718);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 43);
+            this.label5.Size = new System.Drawing.Size(119, 43);
             this.label5.TabIndex = 3;
-            this.label5.Text = string.Format("0 / 5");
+            this.label5.Text = "0 / 5";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Consolas", 22F);
+            this.label1.Font = new System.Drawing.Font("Consolas", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1063, 733);
+            this.label1.Location = new System.Drawing.Point(867, 170);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(319, 43);
+            this.label1.Size = new System.Drawing.Size(398, 45);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Cena: 2   3   3";
+            this.label1.Text = "  Cena:  2   3   3";
             // 
             // pictureBox4
             // 
@@ -256,6 +270,7 @@ namespace Princes_Escape
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
