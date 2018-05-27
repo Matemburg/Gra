@@ -26,7 +26,7 @@ namespace Princes_Escape
         private bool innyPoziom = false;
         public string nick = "edytor";
         private List<Chain> Lancuch = new List<Chain>();
-        Thread thread1 = new Thread(Muzyka.Play);
+        Thread thread1;
 
 
 
@@ -310,13 +310,18 @@ namespace Princes_Escape
 
         private void Gra_Load(object sender, EventArgs e)
         {
-            SoundPlayer Muzyka;
-            Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
-            Muzyka.PlayLooping();
+            //SoundPlayer Muzyka;
+            //Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
+            // Muzyka.PlayLooping();
+           // WaveOut muzyka = new WaveOut();
+            //MemoryStream mp3file = new MemoryStream(Properties.Resources.Motivated);
+            //Mp3FileReader mp3reader = new Mp3FileReader(mp3file);
 
+            //muzyka.Init(mp3reader);
 
-            thread1.Start();
-            //backgroundWorker1.RunWorkerAsync();
+             thread1 = new Thread(Muzyka.Play);
+             thread1.Start();
+            backgroundWorker1.RunWorkerAsync();
             pictureBox2.Parent = imgObrazek;
             pictureBox3.Parent = imgObrazek;
             label2.Parent = imgObrazek;
@@ -621,7 +626,7 @@ namespace Princes_Escape
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            Muzyka.Play();
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
