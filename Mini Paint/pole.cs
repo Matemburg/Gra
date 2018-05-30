@@ -12,6 +12,8 @@ namespace Princes_Escape
         public int centrumY;
         public int bok;
         public bool permission;
+        public bool pusto= true;
+        public bool przeciwnik = false;
 
 
         public pole(int xx, int yy, int bokk,bool permissionn)
