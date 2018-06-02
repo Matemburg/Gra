@@ -44,6 +44,7 @@ namespace Princes_Escape
             this.imgObrazek = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -56,6 +57,7 @@ namespace Princes_Escape
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label1);
@@ -70,9 +72,8 @@ namespace Princes_Escape
             this.panel1.Controls.Add(this.imgObrazek);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1387, 777);
+            this.panel1.Size = new System.Drawing.Size(1040, 631);
             this.panel1.TabIndex = 0;
             // 
             // label6
@@ -81,9 +82,10 @@ namespace Princes_Escape
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Consolas", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(867, 266);
+            this.label6.Location = new System.Drawing.Point(650, 216);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(398, 45);
+            this.label6.Size = new System.Drawing.Size(303, 36);
             this.label6.TabIndex = 12;
             this.label6.Text = "U¿ycie:  Z   X   C";
             // 
@@ -93,9 +95,10 @@ namespace Princes_Escape
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Consolas", 22F);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(89, 718);
+            this.label5.Location = new System.Drawing.Point(67, 583);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 43);
+            this.label5.Size = new System.Drawing.Size(95, 36);
             this.label5.TabIndex = 3;
             this.label5.Text = "0 / 5";
             // 
@@ -105,19 +108,19 @@ namespace Princes_Escape
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Consolas", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(867, 170);
+            this.label1.Location = new System.Drawing.Point(650, 138);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(398, 45);
+            this.label1.Size = new System.Drawing.Size(303, 36);
             this.label1.TabIndex = 3;
             this.label1.Text = "  Cena:  2   3   3";
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Location = new System.Drawing.Point(88, 26);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox4.Location = new System.Drawing.Point(66, 21);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox4.Size = new System.Drawing.Size(75, 81);
             this.pictureBox4.TabIndex = 11;
             this.pictureBox4.TabStop = false;
             // 
@@ -127,20 +130,18 @@ namespace Princes_Escape
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Consolas", 25.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(226, 26);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(170, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(166, 51);
+            this.label3.Size = new System.Drawing.Size(132, 41);
             this.label3.TabIndex = 10;
             this.label3.Text = "Monety";
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Location = new System.Drawing.Point(1273, 645);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Location = new System.Drawing.Point(955, 524);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(85, 79);
+            this.pictureBox3.Size = new System.Drawing.Size(64, 64);
             this.pictureBox3.TabIndex = 8;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
@@ -148,10 +149,9 @@ namespace Princes_Escape
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Location = new System.Drawing.Point(1180, 645);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(885, 524);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(85, 79);
+            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -159,10 +159,9 @@ namespace Princes_Escape
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Location = new System.Drawing.Point(1087, 645);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(815, 524);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(85, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -173,9 +172,10 @@ namespace Princes_Escape
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Consolas", 120F);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(1677, 695);
+            this.label4.Location = new System.Drawing.Point(1258, 565);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(208, 234);
+            this.label4.Size = new System.Drawing.Size(167, 187);
             this.label4.TabIndex = 5;
             this.label4.Text = "0";
             // 
@@ -185,9 +185,10 @@ namespace Princes_Escape
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Consolas", 120F);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(49, 380);
+            this.label2.Location = new System.Drawing.Point(37, 309);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(208, 234);
+            this.label2.Size = new System.Drawing.Size(167, 187);
             this.label2.TabIndex = 3;
             this.label2.Text = "1";
             // 
@@ -195,12 +196,12 @@ namespace Princes_Escape
             // 
             this.progressBar1.BackColor = System.Drawing.Color.Wheat;
             this.progressBar1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.progressBar1.Location = new System.Drawing.Point(66, 616);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.progressBar1.Location = new System.Drawing.Point(50, 500);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.progressBar1.MarqueeAnimationSpeed = 5;
             this.progressBar1.Maximum = 10;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(160, 100);
+            this.progressBar1.Size = new System.Drawing.Size(120, 81);
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 1;
             this.progressBar1.Tag = "";
@@ -211,9 +212,8 @@ namespace Princes_Escape
             this.imgObrazek.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.imgObrazek.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgObrazek.Location = new System.Drawing.Point(0, 0);
-            this.imgObrazek.Margin = new System.Windows.Forms.Padding(4);
             this.imgObrazek.Name = "imgObrazek";
-            this.imgObrazek.Size = new System.Drawing.Size(1385, 775);
+            this.imgObrazek.Size = new System.Drawing.Size(1038, 629);
             this.imgObrazek.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.imgObrazek.TabIndex = 0;
             this.imgObrazek.TabStop = false;
@@ -222,21 +222,30 @@ namespace Princes_Escape
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 75;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(70, 175);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "label7";
+            // 
             // Gra
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::Princes_Escape.Properties.Resources.Lava;
-            this.ClientSize = new System.Drawing.Size(1387, 777);
+            this.ClientSize = new System.Drawing.Size(1040, 631);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Gra";
             this.Text = "Tower Atack";
@@ -271,6 +280,7 @@ namespace Princes_Escape
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

@@ -27,7 +27,8 @@ namespace Princes_Escape
         public string nick = "edytor";
         private List<Chain> Lancuch = new List<Chain>();
         Thread thread1;
-
+        DateTime poczatek;
+        TimeSpan ts;
 
 
         public Gra(string nazwa)
@@ -70,248 +71,251 @@ namespace Princes_Escape
                 Princess.back();
                 back = true;
             }
-            if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1])
+            else
             {
-                for (int i = 0; i < 9; i++)
+                if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1])
                 {
-                    for (int j = 0; j < 9; j++)
+                    for (int i = 0; i < 9; i++)
                     {
-                        PLANSZA.POLA[i, j].permission = true;
-                    }
-                }
-                stage++;
-                label4.Text = stage.ToString();
-                Princess.restart();
-                Lancuch.Clear();
-                poziom.Lvl_losuj_V2(stage);
-                Poziom_Plasza_inicjalizacja();
-
-
-            }
-
-
-
-            /// WROGOWIE ////////////////////////////////////////////
-            if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].pusto == false)
-            {
-                if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].przeciwnik == true)
-                {
-                    for (int w = 0; w < poziom.get_wrogowie().Count; w++)
-                    {
-                        if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()])
+                        for (int j = 0; j < 9; j++)
                         {
-                            if (poziom.get_wrogowie()[w].get_istnieje() == true)
+                            PLANSZA.POLA[i, j].permission = true;
+                        }
+                    }
+                    stage++;
+                    label4.Text = stage.ToString();
+                    Princess.restart();
+                    Lancuch.Clear();
+                    poziom.Lvl_losuj_V2(stage);
+                    Poziom_Plasza_inicjalizacja();
+
+
+                }
+
+
+
+                /// WROGOWIE ////////////////////////////////////////////
+                if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].pusto == false)
+                {
+                    if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].przeciwnik == true)
+                    {
+                        for (int w = 0; w < poziom.get_wrogowie().Count; w++)
+                        {
+                            if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()])
                             {
-                                Princess.zran(poziom.get_wrogowie()[w].atak);
-                                lvl_Princess = Princess.get_lvl();
-                                Princess.addXP(poziom.get_wrogowie()[w].xp);
-                                progressBar1.Maximum = Princess.get_trudnosc();
-                                progressBar1.Increment(poziom.get_wrogowie()[w].xp);
-                                label2.Text = Princess.get_lvl().ToString();
-                                if (lvl_Princess < Princess.get_lvl())
+                                if (poziom.get_wrogowie()[w].get_istnieje() == true)
                                 {
-                                    progressBar1.Increment(-Princess.get_trudnosc());
+                                    Princess.zran(poziom.get_wrogowie()[w].atak);
+                                    lvl_Princess = Princess.get_lvl();
+                                    Princess.addXP(poziom.get_wrogowie()[w].xp);
+                                    progressBar1.Maximum = Princess.get_trudnosc();
+                                    progressBar1.Increment(poziom.get_wrogowie()[w].xp);
+                                    label2.Text = Princess.get_lvl().ToString();
+                                    if (lvl_Princess < Princess.get_lvl())
+                                    {
+                                        progressBar1.Increment(-Princess.get_trudnosc());
+                                    }
+
+                                    if (Princess.gethp() == 0)
+                                    {
+
+                                        MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
+                                        //   Form4.InicjalizacjaDanych();
+                                        //MessageBox.Show(nick);
+                                        Users.DodajUsera(lkrokow, nick);
+
+                                        thread1.Abort();
+                                        System.Windows.Forms.Application.Exit();
+                                    }
+
+                                    SoundPlayer simpleSound;
+                                    simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Kill);
+                                    simpleSound.Play();
+                                    poziom.get_wrogowie()[w].zabij();
+                                    if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() || Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
+                                    {
+                                        if (akcja == "")
+                                        {
+                                            lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, w, "przeciwnik", kierunek);
+                                            lancuch_natysowany = true;
+
+                                        }
+                                    }
+                                    break;
                                 }
+                            }
+                            label5.Text = string.Format("{0} / {1}", Princess.get_xp(), Princess.get_trudnosc());
 
-                                if (Princess.gethp() == 0)
-                                {
+                        }
 
-                                    MessageBox.Show("Koniec GRY" + " Liczba krokow wynios³a " + lkrokow.ToString());
-                                    //   Form4.InicjalizacjaDanych();
-                                    //MessageBox.Show(nick);
-                                    Users.DodajUsera(lkrokow, nick);
+                    }
+                    if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()].przedmiot==true)
+                    {
 
-                                    thread1.Abort();
-                                    System.Windows.Forms.Application.Exit();
-                                }
 
-                                SoundPlayer simpleSound;
-                                simpleSound = new SoundPlayer(Princes_Escape.Properties.Resources.Kill);
-                                simpleSound.Play();
-                                poziom.get_wrogowie()[w].zabij();
-                                if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() || Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
+                        ////////////////////// APTECZKI ///////////////////////////
+                        for (int a = 0; a < poziom.get_item().Count; a++)
+                        {
+                            if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()] && poziom.get_item()[a].get_istnieje() == true)
+                            {
+                                poziom.get_item()[a].Akcja(Princess);
+                                if (Princess.pozycjapoprzednia_x == poziom.get_item()[a].get_x() || Princess.pozycjapoprzednia_y == poziom.get_item()[a].get_y())
                                 {
                                     if (akcja == "")
                                     {
-                                        lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, w, "przeciwnik", kierunek);
+                                        lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, a, "item", kierunek);
                                         lancuch_natysowany = true;
-
                                     }
                                 }
                                 break;
                             }
                         }
-                        label5.Text = string.Format("{0} / {1}", Princess.get_xp(), Princess.get_trudnosc());
-
-                    }
-
-                }
-                else
-                {
-
-
-                    ////////////////////// APTECZKI ///////////////////////////
-                    for (int a = 0; a < poziom.get_item().Count; a++)
-                    {
-                        if (PLANSZA.POLA[Princess.get_x(), Princess.get_y()] == PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()] && poziom.get_item()[a].get_istnieje() == true)
-                        {
-                            poziom.get_item()[a].Akcja(Princess);
-                            if (Princess.pozycjapoprzednia_x == poziom.get_item()[a].get_x() || Princess.pozycjapoprzednia_y == poziom.get_item()[a].get_y())
-                            {
-                                if (akcja == "")
-                                {
-                                    lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, a, "item", kierunek);
-                                    lancuch_natysowany = true;
-                                }
-                            }
-                            break;
-                        }
                     }
                 }
-            }
 
 
-            g.DrawImage(Pipi, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumX - 32, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumY - 32, 64, 64);
+                g.DrawImage(Pipi, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumX - 32, PLANSZA.POLA[Princess.get_x(), Princess.get_y()].centrumY - 32, 64, 64);
 
-            g.DrawImage(Properties.Resources.Trapdoor, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumX - 32, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumY - 32, 64, 64);
-            if (akcja == "")
-            {
-
-                if (back == false)
+                g.DrawImage(Properties.Resources.Trapdoor, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumX - 32, PLANSZA.POLA[wielkosc_planszy - 1, wielkosc_planszy - 1].centrumY - 32, 64, 64);
+                if (akcja == "")
                 {
-                    if (Princess.pozycjapoprzednia_x != Princess.get_x() || Princess.pozycjapoprzednia_y != Princess.get_y())
+
+                    if (back == false)
                     {
-                        if (lancuch_natysowany == false)
+                        if (Princess.pozycjapoprzednia_x != Princess.get_x() || Princess.pozycjapoprzednia_y != Princess.get_y())
                         {
-                            if (Lancuch.Count == 0)
-                                lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0", kierunek);
-                            else
+                            if (lancuch_natysowany == false)
                             {
-                                // int x = Lancuch[Lancuch.Count - 1].x;
-                                //  MessageBox.Show(x.ToString());
-                                if (Lancuch[Lancuch.Count - 1].x == Princess.get_x() && Lancuch[Lancuch.Count - 1].y == Princess.get_y())
-                                {
-                                    lkrokow--;
-                                    // MessageBox.Show(Lancuch.Count.ToString());
-                                    if (Lancuch[Lancuch.Count - 1].rodzaj == "przeciwnik")
-                                    {
-                                        poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].wskrzes();
-                                        Princess.lecz(poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].atak);
-                                        Princess.addXP(-(poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].xp));
-                                        progressBar1.Increment(-poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].xp);
-                                    }
-                                    if (Lancuch[Lancuch.Count - 1].rodzaj == "item")
-                                    {
-                                        poziom.get_item()[Lancuch[Lancuch.Count - 1].nr].AntyAkcja(Princess);
-                                    }
-                                    if (Lancuch[Lancuch.Count - 1].Akcja == "miecz")
-                                    {
-                                        Princess.dajkase(0);//// MIECZ KASA
-                                        for (int w = 0; w < poziom.get_wrogowie().Count; w++)
-                                        {
-                                            if (Princess.pozycjapoprzednia_x + 1 == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
-                                                poziom.get_wrogowie()[w].wskrzes();
-
-                                            if (Princess.pozycjapoprzednia_x - 1 == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
-                                                poziom.get_wrogowie()[w].wskrzes();
-
-                                            if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y + 1 == poziom.get_wrogowie()[w].get_y())
-                                                poziom.get_wrogowie()[w].wskrzes();
-
-                                            if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y - 1 == poziom.get_wrogowie()[w].get_y())
-                                                poziom.get_wrogowie()[w].wskrzes();
-                                        }
-                                    }
-                                    if (Lancuch[Lancuch.Count - 1].Akcja == "kilof")
-                                    {
-                                        Princess.dajkase(0);//// Kilof KASA
-                                        for (int w = 0; w < poziom.get_przeszkody().Count; w++)
-                                        {
-                                            if (Princess.pozycjapoprzednia_x + 1 == poziom.get_przeszkody()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_przeszkody()[w].get_y())
-                                                poziom.get_przeszkody()[w].wskrzes();
-
-                                            if (Princess.pozycjapoprzednia_x - 1 == poziom.get_przeszkody()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_przeszkody()[w].get_y())
-                                                poziom.get_przeszkody()[w].wskrzes();
-
-                                            if (Princess.pozycjapoprzednia_x == poziom.get_przeszkody()[w].get_x() && Princess.pozycjapoprzednia_y + 1 == poziom.get_przeszkody()[w].get_y())
-                                                poziom.get_przeszkody()[w].wskrzes();
-
-                                            if (Princess.pozycjapoprzednia_x == poziom.get_przeszkody()[w].get_x() && Princess.pozycjapoprzednia_y - 1 == poziom.get_przeszkody()[w].get_y())
-                                                poziom.get_przeszkody()[w].wskrzes();
-                                            //imgObrazek.Refresh();
-                                        }
-                                    }
-                                    else if (Lancuch[Lancuch.Count - 1].Akcja == "apteczka")
-                                    {
-                                        Princess.dajkase(2);
-                                        Princess.zran(1);
-                                    }
-                                    Lancuch.RemoveRange(Lancuch.Count - 1, 1);
-
-                                    if (Lancuch.Count != 0)
-                                        PLANSZA.POLA[Lancuch[Lancuch.Count - 1].x, Lancuch[Lancuch.Count - 1].y].permission = true;
-
-
-                                }
+                                if (Lancuch.Count == 0)
+                                    lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0", kierunek);
                                 else
                                 {
-                                    lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0", kierunek);
-                                    PLANSZA.POLA[Lancuch[Lancuch.Count - 2].x, Lancuch[Lancuch.Count - 2].y].permission = false;
+                                    // int x = Lancuch[Lancuch.Count - 1].x;
+                                    //  MessageBox.Show(x.ToString());
+                                    if (Lancuch[Lancuch.Count - 1].x == Princess.get_x() && Lancuch[Lancuch.Count - 1].y == Princess.get_y())
+                                    {
+                                        lkrokow--;
+                                        // MessageBox.Show(Lancuch.Count.ToString());
+                                        if (Lancuch[Lancuch.Count - 1].rodzaj == "przeciwnik")
+                                        {
+                                            poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].wskrzes();
+                                            Princess.lecz(poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].atak);
+                                            Princess.addXP(-(poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].xp));
+                                            progressBar1.Increment(-poziom.get_wrogowie()[Lancuch[Lancuch.Count - 1].nr].xp);
+                                        }
+                                        if (Lancuch[Lancuch.Count - 1].rodzaj == "item")
+                                        {
+                                            poziom.get_item()[Lancuch[Lancuch.Count - 1].nr].AntyAkcja(Princess);
+                                        }
+                                        if (Lancuch[Lancuch.Count - 1].Akcja == "miecz")
+                                        {
+                                            Princess.dajkase(0);//// MIECZ KASA
+                                            for (int w = 0; w < poziom.get_wrogowie().Count; w++)
+                                            {
+                                                if (Princess.pozycjapoprzednia_x + 1 == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
+                                                    poziom.get_wrogowie()[w].wskrzes();
+
+                                                if (Princess.pozycjapoprzednia_x - 1 == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_wrogowie()[w].get_y())
+                                                    poziom.get_wrogowie()[w].wskrzes();
+
+                                                if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y + 1 == poziom.get_wrogowie()[w].get_y())
+                                                    poziom.get_wrogowie()[w].wskrzes();
+
+                                                if (Princess.pozycjapoprzednia_x == poziom.get_wrogowie()[w].get_x() && Princess.pozycjapoprzednia_y - 1 == poziom.get_wrogowie()[w].get_y())
+                                                    poziom.get_wrogowie()[w].wskrzes();
+                                            }
+                                        }
+                                        if (Lancuch[Lancuch.Count - 1].Akcja == "kilof")
+                                        {
+                                            Princess.dajkase(0);//// Kilof KASA
+                                            for (int w = 0; w < poziom.get_przeszkody().Count; w++)
+                                            {
+                                                if (Princess.pozycjapoprzednia_x + 1 == poziom.get_przeszkody()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_przeszkody()[w].get_y())
+                                                    poziom.get_przeszkody()[w].wskrzes();
+
+                                                if (Princess.pozycjapoprzednia_x - 1 == poziom.get_przeszkody()[w].get_x() && Princess.pozycjapoprzednia_y == poziom.get_przeszkody()[w].get_y())
+                                                    poziom.get_przeszkody()[w].wskrzes();
+
+                                                if (Princess.pozycjapoprzednia_x == poziom.get_przeszkody()[w].get_x() && Princess.pozycjapoprzednia_y + 1 == poziom.get_przeszkody()[w].get_y())
+                                                    poziom.get_przeszkody()[w].wskrzes();
+
+                                                if (Princess.pozycjapoprzednia_x == poziom.get_przeszkody()[w].get_x() && Princess.pozycjapoprzednia_y - 1 == poziom.get_przeszkody()[w].get_y())
+                                                    poziom.get_przeszkody()[w].wskrzes();
+                                                //imgObrazek.Refresh();
+                                            }
+                                        }
+                                        else if (Lancuch[Lancuch.Count - 1].Akcja == "apteczka")
+                                        {
+                                            Princess.dajkase(2);
+                                            Princess.zran(1);
+                                        }
+                                        Lancuch.RemoveRange(Lancuch.Count - 1, 1);
+
+                                        if (Lancuch.Count != 0)
+                                            PLANSZA.POLA[Lancuch[Lancuch.Count - 1].x, Lancuch[Lancuch.Count - 1].y].permission = true;
+
+
+                                    }
+                                    else
+                                    {
+                                        lancuch_dodaj(Princess.pozycjapoprzednia_x, Princess.pozycjapoprzednia_y, -1, "0", kierunek);
+                                        PLANSZA.POLA[Lancuch[Lancuch.Count - 2].x, Lancuch[Lancuch.Count - 2].y].permission = false;
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
-            label3.Text = Princess.monety.ToString();
-            for (int i = 0; Princess.gethp() > i; i++)
-            {
-                g.DrawImage(Properties.Resources.Serce, 15, 15 + i * 65, 64, 64);
-            }
-            for (int i = Princess.gethp(); Princess.get_hp_max() > i; i++)
-            {
-                g.DrawImage(Properties.Resources.czaszka, 15, 15 + i * 65, 64, 64);
-            }
-            for (int a = 0; a < poziom.get_item().Count; a++)
-            {
-                if (poziom.get_item()[a].get_istnieje() == true)
-                    g.DrawImage(poziom.get_item()[a].avatar, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumY - 32, 64, 64);
-            }
-            for (int w = 0; w < poziom.get_wrogowie().Count; w++)
-            {
-                if (poziom.get_wrogowie()[w].get_istnieje() == true)
-                    g.DrawImage(poziom.get_wrogowie()[w].avatar, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
-                else
-                    g.DrawImage(poziom.get_wrogowie()[w].avatar_martwy, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
-            }
+                label3.Text = Princess.monety.ToString();
+                for (int i = 0; Princess.gethp() > i; i++)
+                {
+                    g.DrawImage(Properties.Resources.Serce, 15, 15 + i * 65, 64, 64);
+                }
+                for (int i = Princess.gethp(); Princess.get_hp_max() > i; i++)
+                {
+                    g.DrawImage(Properties.Resources.czaszka, 15, 15 + i * 65, 64, 64);
+                }
+                for (int a = 0; a < poziom.get_item().Count; a++)
+                {
+                    if (poziom.get_item()[a].get_istnieje() == true)
+                        g.DrawImage(poziom.get_item()[a].avatar, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_item()[a].get_x(), poziom.get_item()[a].get_y()].centrumY - 32, 64, 64);
+                }
+                for (int w = 0; w < poziom.get_wrogowie().Count; w++)
+                {
+                    if (poziom.get_wrogowie()[w].get_istnieje() == true)
+                        g.DrawImage(poziom.get_wrogowie()[w].avatar, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
+                    else
+                        g.DrawImage(poziom.get_wrogowie()[w].avatar_martwy, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].centrumY - 32, 64, 64);
+                }
 
-            for (int i = 0; i < Lancuch.Count - 1; i++)
-            {
-                PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].permission = false;
-            }
+                for (int i = 0; i < Lancuch.Count - 1; i++)
+                {
+                    PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].permission = false;
+                }
 
-            ///// Przeszkody
+                ///// Przeszkody
 
-            for (int w = 0; w < poziom.get_przeszkody().Count; w++)
-            {
-                if (poziom.get_przeszkody()[w].get_istnieje() == true)
-                    g.DrawImage(poziom.get_przeszkody()[w].avatar, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumY - 32, 64, 64);
-            }
-
+                for (int w = 0; w < poziom.get_przeszkody().Count; w++)
+                {
+                    if (poziom.get_przeszkody()[w].get_istnieje() == true)
+                        g.DrawImage(poziom.get_przeszkody()[w].avatar, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumX - 32, PLANSZA.POLA[poziom.get_przeszkody()[w].get_x(), poziom.get_przeszkody()[w].get_y()].centrumY - 32, 64, 64);
+                }
 
 
-            for (int i = 0; i < Lancuch.Count; i++)
-            {
-                if (Lancuch[i].kierunek == "left")
-                    g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
-                if (Lancuch[i].kierunek == "right")
-                    g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
-                if (Lancuch[i].kierunek == "down")
-                    g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
-                if (Lancuch[i].kierunek == "up")
-                    g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+
+                for (int i = 0; i < Lancuch.Count; i++)
+                {
+                    if (Lancuch[i].kierunek == "left")
+                        g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                    if (Lancuch[i].kierunek == "right")
+                        g.DrawImage(Properties.Resources.chain, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                    if (Lancuch[i].kierunek == "down")
+                        g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y(), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                    if (Lancuch[i].kierunek == "up")
+                        g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
+                }
+                imgObrazek.Refresh();
             }
-            imgObrazek.Refresh();
         }
 
         private void Gra_Load(object sender, EventArgs e)
@@ -319,13 +323,14 @@ namespace Princes_Escape
             //SoundPlayer Muzyka;
             //Muzyka = new SoundPlayer(Properties.Resources.Muzyka_2);
             // Muzyka.PlayLooping();
-           // WaveOut muzyka = new WaveOut();
+            // WaveOut muzyka = new WaveOut();
             //MemoryStream mp3file = new MemoryStream(Properties.Resources.Motivated);
             //Mp3FileReader mp3reader = new Mp3FileReader(mp3file);
 
             //muzyka.Init(mp3reader);
-
-             thread1 = new Thread(Muzyka.Play);
+            poczatek = new DateTime(DateTime.Now.Ticks);
+            timer1.Start();
+            thread1 = new Thread(Muzyka.Play);
              thread1.Start();
             backgroundWorker1.RunWorkerAsync();
             pictureBox2.Parent = imgObrazek;
@@ -601,7 +606,7 @@ namespace Princes_Escape
                 poziom.wczytaj_z_pliku();
                 Rysowanie_i_obliczanie("mapa");
             }
-            else 
+            else
             if (e.KeyCode == Keys.NumPad5)
             {
                 Princess.restart(0, 0);
@@ -625,7 +630,13 @@ namespace Princes_Escape
             }
             label5.Text = string.Format("{0} / {1}", Princess.get_xp(), Princess.get_trudnosc());
 
+            if (e.KeyCode == Keys.NumPad9)
+            {
+                Poziom_Plasza_inicjalizacja();
+            }
         }
+
+
 
         public void Poziom_Plasza_inicjalizacja()
         {
@@ -642,9 +653,11 @@ namespace Princes_Escape
                 PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].pusto = false;
                 PLANSZA.POLA[poziom.get_wrogowie()[w].get_x(), poziom.get_wrogowie()[w].get_y()].przeciwnik = true;
             }
-            for (int w = 0; w < poziom.get_item().Count; w++)     
+            for (int w = 0; w < poziom.get_item().Count; w++)
+            {
                 PLANSZA.POLA[poziom.get_item()[w].get_x(), poziom.get_item()[w].get_y()].pusto = false;
-
+                PLANSZA.POLA[poziom.get_item()[w].get_x(), poziom.get_item()[w].get_y()].przedmiot = true;
+            }
             for (int i = 0; i < poziom.get_przeszkody().Count; i++)
             {
                 if (poziom.get_przeszkody()[i].get_istnieje() == true)
@@ -677,6 +690,15 @@ namespace Princes_Escape
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             uderzeniekilofem();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
+                // string test;
+                ts = DateTime.Now - poczatek;
+                label7.Text = ts.ToString();
+            
         }
     }
 }
