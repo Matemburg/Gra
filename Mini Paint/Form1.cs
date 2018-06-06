@@ -373,6 +373,7 @@ namespace Princes_Escape
             label4.Parent = imgObrazek;
             label5.Parent = imgObrazek;
             label6.Parent = imgObrazek;
+            label7.Parent = imgObrazek;
 
             if (innyPoziom == false)
             {
@@ -393,8 +394,13 @@ namespace Princes_Escape
             imgObrazek.Image = new Bitmap(Width, Height);
             g = Graphics.FromImage(imgObrazek.Image);
             l = Graphics.FromImage(imgObrazek.Image);
-
+            int x = new Random().Next(3);
+            if (x == 1) 
             Pipi = Princes_Escape.Properties.Resources.Princes;
+            if (x == 2)
+            Pipi = Princes_Escape.Properties.Resources.KK_2;
+            else
+            Pipi = Princes_Escape.Properties.Resources.ksiê¿niczka_3;
             label2.BackColor = Color.Transparent;
             label1.BackColor = Color.Transparent;
             label4.BackColor = Color.Transparent;
@@ -696,8 +702,8 @@ namespace Princes_Escape
         {
            
                 // string test;
-                ts = DateTime.Now - poczatek;
-                label7.Text = ts.ToString();
+            ts = DateTime.Now - poczatek;
+            label7.Text = ts.ToString();
             
         }
     }

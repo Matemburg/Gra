@@ -20,8 +20,13 @@ namespace Princes_Escape
         
             pictureBox1.Image = new Bitmap(300, 100);
             l = Graphics.FromImage(pictureBox1.Image);
-            l.DrawImage(Princes_Escape.Properties.Resources.Princes, 100, 25);
-            
+            l.DrawImage(Princes_Escape.Properties.Resources.Princes, 0, 0);
+            pictureBox10.Image = new Bitmap(80, 80);
+            l = Graphics.FromImage(pictureBox10.Image);
+            l.DrawImage(Princes_Escape.Properties.Resources.KK_2, 0, 0);
+            pictureBox11.Image = new Bitmap(80, 80);
+            l = Graphics.FromImage(pictureBox11.Image);
+            l.DrawImage(Princes_Escape.Properties.Resources.księżniczka_3, 0, 0);
 
             // new Form4();
 

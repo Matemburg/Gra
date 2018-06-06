@@ -190,6 +190,16 @@ namespace Princes_Escape.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap KK_2 {
+            get {
+                object obj = ResourceManager.GetObject("KK_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Klucz {
             get {
                 object obj = ResourceManager.GetObject("Klucz", resourceCulture);
@@ -248,6 +258,16 @@ namespace Princes_Escape.Properties {
         internal static System.IO.UnmanagedMemoryStream Krok_6 {
             get {
                 return ResourceManager.GetStream("Krok_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap księżniczka_3 {
+            get {
+                object obj = ResourceManager.GetObject("księżniczka_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
