@@ -81,7 +81,7 @@ namespace Princes_Escape
                         {
                             if (j > 2 || i > 1)
                             {
-                                if (j < 7 || i < 7)
+                                if (j < 8 || i < 7)
                                 {
                                     if (Liczba_losowa % 12 == 0)
                                         Wrogowie.Add(new Przeciwnik(i, j, 2, 2, "wąż"));
@@ -102,13 +102,13 @@ namespace Princes_Escape
                             Liczba_losowa = random.Next(50, 100);
                     }
 
-                    if (50 < Liczba_losowa && 80 > Liczba_losowa)
+                    if (50 < Liczba_losowa && 89 > Liczba_losowa)
                     {
                         if (j > 2 || i > 2)
                         {
                             if (j < 7 || i < 7)
                             {
-                                if (L_Lava <  i + j)
+                                if (L_Lava <  3 * j + ((stage-1)/(i+1)))
                                 {
                                     Random losowanie_przeszkody = new Random(DateTime.Now.Millisecond);
                                     int los = losowanie_przeszkody.Next(0, 10);
@@ -227,7 +227,7 @@ namespace Princes_Escape
                         {
                             if (j < 7 || i < 7)
                             {
-                                if (L_Lava < 2 * i)
+                                if (L_Lava < 2 * j - i)
                                 {
                                     Random losowanie_przeszkody = new Random(DateTime.Now.Millisecond);
                                     int los = losowanie_przeszkody.Next(0, 10);
