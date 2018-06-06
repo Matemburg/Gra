@@ -314,6 +314,8 @@ namespace Princes_Escape
                     if (Lancuch[i].kierunek == "up")
                         g.DrawImage(Properties.Resources.chain1, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_x() - (PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok / 2), PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].getcentrum_y() - PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok, PLANSZA.POLA[Lancuch[i].x, Lancuch[i].y].bok);
                 }
+                ts = DateTime.Now - poczatek;
+                label7.Text = ts.ToString();
                 imgObrazek.Refresh();
             }
         }
@@ -395,9 +397,9 @@ namespace Princes_Escape
             g = Graphics.FromImage(imgObrazek.Image);
             l = Graphics.FromImage(imgObrazek.Image);
             int x = new Random().Next(3);
-            if (x == 1) 
+            if (x == 0) 
             Pipi = Princes_Escape.Properties.Resources.Princes;
-            if (x == 2)
+            if (x == 1)
             Pipi = Princes_Escape.Properties.Resources.KK_2;
             else
             Pipi = Princes_Escape.Properties.Resources.ksiê¿niczka_3;
