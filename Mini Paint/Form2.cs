@@ -35,11 +35,16 @@ namespace Princes_Escape
 
         private void button1_Click(object sender, EventArgs e)
         {
-            simpleSound.Stop();
             nick = this.nickbox.Text;
-            Klik.Play();
-            new Gra(nick).Show();
-            this.Hide();
+            if (nick == "") MessageBox.Show("Podaj nick!");
+            else
+            {
+                simpleSound.Stop();
+                Klik.Play();
+                new Gra(nick).Show();
+                this.Hide();
+            }
+            
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -83,7 +88,14 @@ namespace Princes_Escape
 
         private void button5_Click(object sender, EventArgs e)
         {
-            new Form4().Show();
+            if (Users.ListaUserow.Count > 0)
+            {
+                new Form4().Show();
+            }
+            else
+            {
+                MessageBox.Show("Najpierw zagraj!");
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

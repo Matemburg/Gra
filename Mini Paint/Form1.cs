@@ -123,9 +123,14 @@ namespace Princes_Escape
                                         //   Form4.InicjalizacjaDanych();
                                         //MessageBox.Show(nick);
                                         Users.DodajUsera(lkrokow, nick);
-
+                                        
+                                        
+                                        new Form2().Show();
+                                        this.Hide();
                                         thread1.Abort();
-                                        System.Windows.Forms.Application.Exit();
+
+                                        
+                                        //  System.Windows.Forms.Application.Exit();
                                     }
 
                                     SoundPlayer simpleSound;
